@@ -54,16 +54,32 @@ const defaultSeo = {
   ogImage: 'https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg'
 };
 
+const defaultHeader = {
+  opacity: 95,
+  bgColor: '#FAF8F5',
+  textColor: '#4a3b32',
+  menuItems: [
+    { name: 'Home', path: '/' },
+    { name: 'Products', path: '/products', hasCategoriesSubmenu: true },
+    { name: 'Categories', path: '/categories' },
+    { name: 'Manufacturing', path: '/manufacturing' },
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' }
+  ]
+};
+
 export const SettingsPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
-  const [activeTab, setActiveTab] = useState<'info' | 'behaviour' | 'seo' | 'backup'>('info');
+  const [activeTab, setActiveTab] = useState<'info' | 'behaviour' | 'seo' | 'header' | 'backup'>('info');
 
   // Config States
   const [general, setGeneral] = useState<any>(defaultGeneral);
   const [behaviour, setBehaviour] = useState<any>(defaultBehaviour);
   const [seo, setSeo] = useState<any>(defaultSeo);
+  const [headerConfig, setHeaderConfig] = useState<any>(defaultHeader);
 
   // Media Picker Trigger
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -94,6 +110,15 @@ export const SettingsPage: React.FC = () => {
       } else {
         await supabase.from('site_settings').upsert([{ key: 'seo_defaults_draft', value: defaultSeo }]);
         setSeo(defaultSeo);
+      }
+
+      // 4. Fetch Header configuration settings
+      const { data: headRes } = await supabase.from('site_settings').select('*').eq('key', 'header_settings_draft').single();
+      if (headRes && headRes.value) {
+        setHeaderConfig({ ...defaultHeader, ...headRes.value });
+      } else {
+        await supabase.from('site_settings').upsert([{ key: 'header_settings_draft', value: defaultHeader }]);
+        setHeaderConfig(defaultHeader);
       }
 
     } catch (err) {
@@ -129,7 +154,8 @@ export const SettingsPage: React.FC = () => {
       await supabase.from('site_settings').upsert([
         { key: 'general_draft', value: general, updated_at: new Date() },
         { key: 'website_behaviour_draft', value: behaviour, updated_at: new Date() },
-        { key: 'seo_defaults_draft', value: seo, updated_at: new Date() }
+        { key: 'seo_defaults_draft', value: seo, updated_at: new Date() },
+        { key: 'header_settings_draft', value: headerConfig, updated_at: new Date() }
       ]);
       setIsDirty(false);
       alert('Draft settings updated successfully!');
@@ -148,14 +174,16 @@ export const SettingsPage: React.FC = () => {
       await supabase.from('site_settings').upsert([
         { key: 'general_draft', value: general, updated_at: new Date() },
         { key: 'website_behaviour_draft', value: behaviour, updated_at: new Date() },
-        { key: 'seo_defaults_draft', value: seo, updated_at: new Date() }
+        { key: 'seo_defaults_draft', value: seo, updated_at: new Date() },
+        { key: 'header_settings_draft', value: headerConfig, updated_at: new Date() }
       ]);
 
       // Upsert live versions
       const { error } = await supabase.from('site_settings').upsert([
         { key: 'general', value: general, updated_at: new Date() },
         { key: 'website_behaviour', value: behaviour, updated_at: new Date() },
-        { key: 'seo_defaults', value: seo, updated_at: new Date() }
+        { key: 'seo_defaults', value: seo, updated_at: new Date() },
+        { key: 'header_settings', value: headerConfig, updated_at: new Date() }
       ]);
 
       if (error) throw error;
@@ -173,6 +201,7 @@ export const SettingsPage: React.FC = () => {
       setGeneral(defaultGeneral);
       setBehaviour(defaultBehaviour);
       setSeo(defaultSeo);
+      setHeaderConfig(defaultHeader);
       setIsDirty(true);
     }
   };
@@ -241,6 +270,11 @@ export const SettingsPage: React.FC = () => {
           activeTab === 'seo' ? 'border-wood-800 text-wood-950' : 'border-transparent text-wood-400 hover:text-wood-650'
         }`}>
           SEO Defaults
+        </button>
+        <button onClick={() => setActiveTab('header')} className={`pb-3 font-bold uppercase tracking-wider bg-transparent border-b-2 px-1 cursor-pointer transition-colors ${
+          activeTab === 'header' ? 'border-wood-800 text-wood-950' : 'border-transparent text-wood-400 hover:text-wood-650'
+        }`}>
+          Header & Menu
         </button>
         <button onClick={() => setActiveTab('backup')} className={`pb-3 font-bold uppercase tracking-wider bg-transparent border-b-2 px-1 cursor-pointer transition-colors ${
           activeTab === 'backup' ? 'border-wood-800 text-wood-950' : 'border-transparent text-wood-400 hover:text-wood-650'
@@ -424,6 +458,249 @@ export const SettingsPage: React.FC = () => {
               <div>
                 <button onClick={() => openPicker('ogImage')} className="bg-wood-800 hover:bg-wood-950 text-white py-1.5 px-3 rounded-lg text-[9px] font-bold uppercase tracking-wider cursor-pointer border-none font-sans">Select OG image</button>
                 <p className="text-[9px] text-wood-450 mt-1">Recommended size: 1200x630px JPG</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 5: Header & Menu Customization */}
+        {activeTab === 'header' && (
+          <div className="flex flex-col gap-6 font-sans">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Header Styling & Appearance</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              {/* Opacity control */}
+              <div className="flex flex-col gap-2">
+                <label className="text-[9px] uppercase text-wood-500">Navbar Opacity ({headerConfig.opacity || 95}%)</label>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="range"
+                    min="10"
+                    max="100"
+                    value={headerConfig.opacity || 95}
+                    onChange={(e) => {
+                      setIsDirty(true);
+                      setHeaderConfig({ ...headerConfig, opacity: parseInt(e.target.value) });
+                    }}
+                    className="w-full h-1 bg-wood-100 rounded-lg appearance-none cursor-pointer accent-wood-800"
+                  />
+                </div>
+                <p className="text-[9px] text-wood-400 font-normal">Controls background transparency of the menu bar.</p>
+              </div>
+
+              {/* Background color */}
+              <div className="flex flex-col gap-1">
+                <label className="text-[9px] uppercase text-wood-500">Background Color (Hex)</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="color"
+                    value={headerConfig.bgColor || '#FAF8F5'}
+                    onChange={(e) => {
+                      setIsDirty(true);
+                      setHeaderConfig({ ...headerConfig, bgColor: e.target.value });
+                    }}
+                    className="w-8 h-8 rounded-lg border border-wood-200 cursor-pointer overflow-hidden p-0"
+                  />
+                  <input
+                    type="text"
+                    value={headerConfig.bgColor || '#FAF8F5'}
+                    onChange={(e) => {
+                      setIsDirty(true);
+                      setHeaderConfig({ ...headerConfig, bgColor: e.target.value });
+                    }}
+                    className="flex-grow bg-wood-50/50 border border-wood-200 rounded-xl py-1.5 px-3 focus:outline-none font-mono text-xs"
+                    placeholder="#FAF8F5"
+                  />
+                </div>
+              </div>
+
+              {/* Text color */}
+              <div className="flex flex-col gap-1">
+                <label className="text-[9px] uppercase text-wood-500">Text & Icon Color (Hex)</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="color"
+                    value={headerConfig.textColor || '#4a3b32'}
+                    onChange={(e) => {
+                      setIsDirty(true);
+                      setHeaderConfig({ ...headerConfig, textColor: e.target.value });
+                    }}
+                    className="w-8 h-8 rounded-lg border border-wood-200 cursor-pointer overflow-hidden p-0"
+                  />
+                  <input
+                    type="text"
+                    value={headerConfig.textColor || '#4a3b32'}
+                    onChange={(e) => {
+                      setIsDirty(true);
+                      setHeaderConfig({ ...headerConfig, textColor: e.target.value });
+                    }}
+                    className="flex-grow bg-wood-50/50 border border-wood-200 rounded-xl py-1.5 px-3 focus:outline-none font-mono text-xs"
+                    placeholder="#4a3b32"
+                  />
+                </div>
+              </div>
+
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t border-wood-100">
+              {/* Logo Manager */}
+              <div className="flex flex-col gap-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Header Branding Logo</span>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded border bg-wood-50 overflow-hidden shrink-0 flex items-center justify-center">
+                    {general.logoUrl ? <img src={general.logoUrl} alt="Logo" className="w-full h-full object-cover" /> : <Info className="w-6 h-6 text-wood-300" />}
+                  </div>
+                  <div>
+                    <button onClick={() => openPicker('logo')} className="bg-wood-800 hover:bg-wood-950 text-white py-1.5 px-3 rounded-lg text-[9px] font-bold uppercase tracking-wider cursor-pointer border-none font-sans">Select Header Logo</button>
+                    <p className="text-[9px] text-wood-450 mt-1">Recommended format: PNG / SVG with transparent background.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Logo Preview */}
+              <div className="flex flex-col gap-3 flex-grow">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Live Header Preview</span>
+                <div
+                  className="p-4 rounded-2xl border border-wood-200 shadow-sm flex items-center justify-between"
+                  style={{
+                    backgroundColor: `${headerConfig.bgColor || '#FAF8F5'}${Math.round((headerConfig.opacity || 95) * 2.55).toString(16).padStart(2, '0')}`,
+                    color: headerConfig.textColor || '#4a3b32'
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    {general.logoUrl && <img src={general.logoUrl} alt="Preview" className="w-6 h-6 rounded-full object-cover" />}
+                    <span className="font-serif text-sm font-bold">NIKHIL</span>
+                  </div>
+                  <div className="flex gap-3 text-[10px] font-sans">
+                    {(headerConfig.menuItems || []).slice(0, 3).map((item: any, i: number) => (
+                      <span key={i} className="hover:underline cursor-pointer">{item.name}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Menu Management */}
+            <div className="flex flex-col gap-3 pt-4 border-t border-wood-100">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Navigation Menu Items</span>
+                <button
+                  onClick={() => {
+                    setIsDirty(true);
+                    setHeaderConfig({
+                      ...headerConfig,
+                      menuItems: [...(headerConfig.menuItems || []), { name: 'New Link', path: '/new-path', hasCategoriesSubmenu: false }]
+                    });
+                  }}
+                  className="bg-wood-800 hover:bg-wood-950 text-white py-1.5 px-3 rounded-lg text-[9px] font-bold uppercase tracking-wider cursor-pointer border-none font-sans"
+                >
+                  + Add Link
+                </button>
+              </div>
+
+              <div className="border border-wood-200/60 rounded-2xl overflow-hidden shadow-sm bg-wood-50/20">
+                <table className="w-full border-collapse text-left text-xs text-wood-800 font-sans">
+                  <thead>
+                    <tr className="bg-wood-50 border-b border-wood-200">
+                      <th className="py-2.5 px-4 font-bold text-[9px] uppercase tracking-wider text-wood-550 w-12">No.</th>
+                      <th className="py-2.5 px-4 font-bold text-[9px] uppercase tracking-wider text-wood-550 w-44">Label</th>
+                      <th className="py-2.5 px-4 font-bold text-[9px] uppercase tracking-wider text-wood-550">Path / Route</th>
+                      <th className="py-2.5 px-4 font-bold text-[9px] uppercase tracking-wider text-wood-550 w-48 text-center">Sub-Menu (Categories)</th>
+                      <th className="py-2.5 px-4 font-bold text-[9px] uppercase tracking-wider text-wood-550 w-44 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(headerConfig.menuItems || []).map((item: any, index: number) => (
+                      <tr key={index} className="border-b border-wood-100 hover:bg-white/60 transition-colors">
+                        <td className="py-3 px-4 font-mono text-[10px] font-bold">{index + 1}</td>
+                        <td className="py-2 px-3">
+                          <input
+                            type="text"
+                            value={item.name}
+                            onChange={(e) => {
+                              setIsDirty(true);
+                              const newItems = [...(headerConfig.menuItems || [])];
+                              newItems[index].name = e.target.value;
+                              setHeaderConfig({ ...headerConfig, menuItems: newItems });
+                            }}
+                            className="w-full bg-white border border-wood-200 rounded-lg py-1 px-2.5 focus:outline-none font-semibold text-xs text-wood-850"
+                          />
+                        </td>
+                        <td className="py-2 px-3">
+                          <input
+                            type="text"
+                            value={item.path}
+                            onChange={(e) => {
+                              setIsDirty(true);
+                              const newItems = [...(headerConfig.menuItems || [])];
+                              newItems[index].path = e.target.value;
+                              setHeaderConfig({ ...headerConfig, menuItems: newItems });
+                            }}
+                            className="w-full bg-white border border-wood-200 rounded-lg py-1 px-2.5 focus:outline-none font-semibold text-xs text-wood-850"
+                          />
+                        </td>
+                        <td className="py-2 px-3 text-center">
+                          <input
+                            type="checkbox"
+                            checked={!!item.hasCategoriesSubmenu}
+                            onChange={(e) => {
+                              setIsDirty(true);
+                              const newItems = [...(headerConfig.menuItems || [])];
+                              newItems[index].hasCategoriesSubmenu = e.target.checked;
+                              setHeaderConfig({ ...headerConfig, menuItems: newItems });
+                            }}
+                            className="w-4 h-4 rounded text-wood-800 border-wood-300 focus:ring-wood-500 cursor-pointer"
+                          />
+                        </td>
+                        <td className="py-2 px-4 text-right flex items-center justify-end gap-1.5 mt-0.5">
+                          <button
+                            disabled={index === 0}
+                            onClick={() => {
+                              setIsDirty(true);
+                              const newItems = [...(headerConfig.menuItems || [])];
+                              const temp = newItems[index];
+                              newItems[index] = newItems[index - 1];
+                              newItems[index - 1] = temp;
+                              setHeaderConfig({ ...headerConfig, menuItems: newItems });
+                            }}
+                            className="p-1 hover:bg-wood-100 rounded text-wood-500 disabled:opacity-30 cursor-pointer"
+                            title="Move Up"
+                          >
+                            ▲
+                          </button>
+                          <button
+                            disabled={index === (headerConfig.menuItems || []).length - 1}
+                            onClick={() => {
+                              setIsDirty(true);
+                              const newItems = [...(headerConfig.menuItems || [])];
+                              const temp = newItems[index];
+                              newItems[index] = newItems[index + 1];
+                              newItems[index + 1] = temp;
+                              setHeaderConfig({ ...headerConfig, menuItems: newItems });
+                            }}
+                            className="p-1 hover:bg-wood-100 rounded text-wood-500 disabled:opacity-30 cursor-pointer"
+                            title="Move Down"
+                          >
+                            ▼
+                          </button>
+                          <button
+                            onClick={() => {
+                              if (window.confirm(`Are you sure you want to delete "${item.name}" link?`)) {
+                                setIsDirty(true);
+                                const newItems = (headerConfig.menuItems || []).filter((_: any, idx: number) => idx !== index);
+                                setHeaderConfig({ ...headerConfig, menuItems: newItems });
+                              }
+                            }}
+                            className="p-1 hover:bg-rose-50 text-rose-600 rounded cursor-pointer"
+                            title="Delete"
+                          >
+                            ✕
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

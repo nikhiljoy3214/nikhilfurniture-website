@@ -12,6 +12,8 @@ export const Navbar: React.FC = () => {
 
   const [announcement, setAnnouncement] = useState<any>(null);
   const [logoUrl, setLogoUrl] = useState<string>('');
+  const [headerConfig, setHeaderConfig] = useState<any>(null);
+  const [navCategories, setNavCategories] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchNavbarSettings = async () => {
@@ -24,6 +26,16 @@ export const Navbar: React.FC = () => {
         const { data: genData } = await supabase.from('site_settings').select('*').eq('key', 'general').single();
         if (genData && genData.value && genData.value.logoUrl) {
           setLogoUrl(genData.value.logoUrl);
+        }
+
+        const { data: headData } = await supabase.from('site_settings').select('*').eq('key', 'header_settings').single();
+        if (headData && headData.value) {
+          setHeaderConfig(headData.value);
+        }
+
+        const { data: catData } = await supabase.from('categories').select('name, slug');
+        if (catData) {
+          setNavCategories(catData);
         }
       } catch (err) {
         console.error(err);
@@ -62,15 +74,26 @@ export const Navbar: React.FC = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
-  const navLinks = [
+  const navLinks = headerConfig?.menuItems || [
     { name: 'Home', path: '/' },
-    { name: 'Products', path: '/products' },
+    { name: 'Products', path: '/products', hasCategoriesSubmenu: true },
     { name: 'Categories', path: '/categories' },
     { name: 'Manufacturing', path: '/manufacturing' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' }
   ];
+
+  const hexColor = headerConfig?.bgColor || '#FAF8F5';
+  const opacityPct = isScrolled ? 100 : (headerConfig?.opacity ?? 95);
+  const opacityHex = Math.round(opacityPct * 2.55).toString(16).padStart(2, '0');
+
+  const navbarStyle = {
+    top: announcement ? '36px' : '0px',
+    backgroundColor: `${hexColor}${opacityHex}`,
+    color: headerConfig?.textColor || '#4a3b32',
+    borderColor: isScrolled ? `${headerConfig?.textColor || '#4a3b32'}15` : 'transparent'
+  };
 
   return (
     <>
@@ -94,12 +117,8 @@ export const Navbar: React.FC = () => {
         </div>
       )}
       <nav
-        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'glass-panel shadow-md py-4'
-            : 'bg-transparent py-6 border-b border-wood-200/10'
-        }`}
-        style={{ top: announcement ? '36px' : '0px' }}
+        className="fixed left-0 right-0 z-50 transition-all duration-500 py-4 shadow-sm border-b"
+        style={navbarStyle}
       >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo and Brand Title */}
@@ -114,10 +133,10 @@ export const Navbar: React.FC = () => {
             }}
           />
           <div className="flex flex-col">
-            <span className="font-serif text-lg font-bold tracking-wide text-wood-900 leading-none group-hover:text-wood-700 transition-colors">
+            <span className="font-serif text-lg font-bold tracking-wide leading-none group-hover:opacity-80 transition-opacity" style={{ color: headerConfig?.textColor || '#4a3b32' }}>
               NIKHIL
             </span>
-            <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-wood-600 font-semibold leading-none mt-1">
+            <span className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold leading-none mt-1" style={{ color: headerConfig?.textColor || '#4a3b32', opacity: 0.7 }}>
               Furniture
             </span>
           </div>
@@ -125,23 +144,41 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Menu links */}
         <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => {
+          {navLinks.map((link: any) => {
             const isActive = location.pathname === link.path;
             return (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`font-sans text-sm font-medium tracking-wide transition-all duration-300 relative py-1.5 ${
-                  isActive
-                    ? 'text-wood-800'
-                    : 'text-wood-600/80 hover:text-wood-900'
-                }`}
-              >
-                {link.name}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-wood-700 rounded-full animate-fade-in" />
+              <div key={link.path} className="relative group/menu py-1.5">
+                <Link
+                  to={link.path}
+                  className="font-sans text-sm font-medium tracking-wide transition-all duration-300 relative py-1"
+                  style={{
+                    color: headerConfig?.textColor || '#4a3b32',
+                    opacity: isActive ? 1 : 0.8
+                  }}
+                >
+                  {link.name}
+                  {isActive && (
+                    <span
+                      className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full animate-fade-in"
+                      style={{ backgroundColor: headerConfig?.textColor || '#4a3b32' }}
+                    />
+                  )}
+                </Link>
+
+                {link.hasCategoriesSubmenu && navCategories.length > 0 && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 w-52 bg-white border border-wood-100 rounded-xl shadow-lg opacity-0 translate-y-1 group-hover/menu:opacity-100 group-hover/menu:translate-y-0 pointer-events-none group-hover/menu:pointer-events-auto transition-all duration-200 z-[110] p-2 flex flex-col gap-1">
+                    {navCategories.map((cat) => (
+                      <Link
+                        key={cat.slug}
+                        to={`/products?category=${encodeURIComponent(cat.name)}`}
+                        className="text-left px-3 py-2 rounded-lg text-xs font-semibold text-wood-700 hover:bg-wood-50 hover:text-wood-950 transition-colors"
+                      >
+                        {cat.name}
+                      </Link>
+                    ))}
+                  </div>
                 )}
-              </Link>
+              </div>
             );
           })}
         </div>
@@ -198,20 +235,34 @@ export const Navbar: React.FC = () => {
       {/* Mobile Drawer Menu */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 top-[72px] bg-wood-50/95 backdrop-blur-lg z-40 py-8 px-6 flex flex-col gap-4 shadow-lg overflow-y-auto h-[calc(100vh-72px)] animate-slide-up">
-          {navLinks.map((link) => {
+          {navLinks.map((link: any) => {
             const isActive = location.pathname === link.path;
             return (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`font-sans text-base font-semibold py-3 px-4 rounded-xl ${
-                  isActive
-                    ? 'bg-wood-800 text-white shadow-sm'
-                    : 'text-wood-700 hover:bg-wood-100 hover:text-wood-900'
-                }`}
-              >
-                {link.name}
-              </Link>
+              <div key={link.path} className="flex flex-col">
+                <Link
+                  to={link.path}
+                  className={`font-sans text-base font-semibold py-3 px-4 rounded-xl text-left ${
+                    isActive
+                      ? 'bg-wood-800 text-white shadow-sm'
+                      : 'text-wood-700 hover:bg-wood-100 hover:text-wood-900'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+                {link.hasCategoriesSubmenu && navCategories.length > 0 && (
+                  <div className="pl-6 flex flex-col gap-1 border-l-2 border-wood-200/50 mt-1 ml-4 text-left">
+                    {navCategories.map((cat) => (
+                      <Link
+                        key={cat.slug}
+                        to={`/products?category=${encodeURIComponent(cat.name)}`}
+                        className="py-2 px-3 rounded-lg text-xs font-semibold text-wood-600 hover:bg-wood-150/40 text-left w-full block"
+                      >
+                        {cat.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             );
           })}
           <hr className="border-wood-200 my-2" />
