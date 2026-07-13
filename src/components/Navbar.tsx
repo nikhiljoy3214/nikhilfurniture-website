@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart, Phone } from 'lucide-react';
+import { Menu, X, Heart, Phone, ChevronDown } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { supabase } from '../lib/supabase';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({});
   const { wishlist } = useWishlist();
   const location = useLocation();
 
@@ -237,25 +238,49 @@ export const Navbar: React.FC = () => {
         <div className="lg:hidden fixed inset-0 top-[72px] bg-wood-50/95 backdrop-blur-lg z-40 py-8 px-6 flex flex-col gap-4 shadow-lg overflow-y-auto h-[calc(100vh-72px)] animate-slide-up">
           {navLinks.map((link: any) => {
             const isActive = location.pathname === link.path;
+            const isExpanded = !!expandedMenus[link.name];
             return (
               <div key={link.path} className="flex flex-col">
-                <Link
-                  to={link.path}
-                  className={`font-sans text-base font-semibold py-3 px-4 rounded-xl text-left ${
-                    isActive
-                      ? 'bg-wood-800 text-white shadow-sm'
-                      : 'text-wood-700 hover:bg-wood-100 hover:text-wood-900'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-                {link.hasCategoriesSubmenu && navCategories.length > 0 && (
-                  <div className="pl-6 flex flex-col gap-1 border-l-2 border-wood-200/50 mt-1 ml-4 text-left">
+                <div className="flex items-center justify-between rounded-xl hover:bg-wood-100/50 transition-colors">
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`font-sans text-base font-semibold py-3 px-4 flex-grow text-left rounded-xl ${
+                      isActive
+                        ? 'text-wood-950 font-bold'
+                        : 'text-wood-700 hover:text-wood-900'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                  {link.hasCategoriesSubmenu && navCategories.length > 0 && (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setExpandedMenus(prev => ({
+                          ...prev,
+                          [link.name]: !prev[link.name]
+                        }));
+                      }}
+                      className="p-3 text-wood-650 hover:text-wood-900 transition-colors cursor-pointer focus:outline-none"
+                      aria-label={`Toggle ${link.name} sub-menu`}
+                    >
+                      <ChevronDown
+                        className="w-4 h-4 transition-transform duration-300"
+                        style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                      />
+                    </button>
+                  )}
+                </div>
+                {link.hasCategoriesSubmenu && navCategories.length > 0 && isExpanded && (
+                  <div className="pl-6 flex flex-col gap-1 border-l-2 border-wood-200/55 mt-1.5 ml-6 text-left animate-fade-in">
                     {navCategories.map((cat) => (
                       <Link
                         key={cat.slug}
                         to={`/products?category=${encodeURIComponent(cat.name)}`}
-                        className="py-2 px-3 rounded-lg text-xs font-semibold text-wood-600 hover:bg-wood-150/40 text-left w-full block"
+                        onClick={() => setIsOpen(false)}
+                        className="py-2.5 px-3 rounded-lg text-xs font-semibold text-wood-600 hover:bg-wood-150/40 text-left w-full block transition-all"
                       >
                         {cat.name}
                       </Link>
