@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar for premium feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FDFBF7;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C7A885;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A47E53;
+  }
+
+  /* Selection style */
+  ::selection {
+    background-color: #5C4033;
+    color: #FDFBF7;
+  }
+
+  body {
+    background-color: #FDFBF7;
+    color: #151515;
+  }
+}
+
+/* Utility classes for animations and aesthetics */
+.glass-panel {
+  background: rgba(253, 251, 247, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 204, 182, 0.3);
+}
+
+.glass-panel-dark {
+  background: rgba(20, 10, 6, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(92, 64, 51, 0.25);
+}
+
+.wood-gradient {
+  background: linear-gradient(135deg, #3D2314 0%, #22120B 100%);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #DFC876 0%, #B09230 100%);
+}
+
+/* Text highlight clipping path for GSAP split-text reveal */
+.text-clip {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+/* Custom cards styling */
+.premium-card-shadow {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card-shadow:hover {
+  box-shadow: 0 20px 40px rgba(92, 64, 51, 0.08);
+  transform: translateY(-4px);
+}
+
+@keyframes scrollDot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-dot {
+  animation: scrollDot 2s infinite ease-in-out;
+}

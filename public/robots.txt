@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin/*
+Disallow: /*?*
+Allow: /products?category=*
+
+Sitemap: https://nikhilfurniture.com/sitemap.xml
