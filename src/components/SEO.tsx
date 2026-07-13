@@ -46,30 +46,39 @@ export const SEO: React.FC<SEOProps> = ({
   productSchemaData
 }) => {
   const [dbSeo, setDbSeo] = useState<any>(cachedSeoSettings);
+  const [favicon, setFavicon] = useState<string>('');
 
   useEffect(() => {
-    if (cachedSeoSettings) {
-      setDbSeo(cachedSeoSettings);
-      return;
-    }
-
-    const fetchSeo = async () => {
+    const fetchSeoAndFavicon = async () => {
       try {
-        const { data } = await supabase
+        if (cachedSeoSettings) {
+          setDbSeo(cachedSeoSettings);
+        } else {
+          const { data } = await supabase
+            .from('site_settings')
+            .select('value')
+            .eq('key', 'seo_settings')
+            .single();
+          if (data && data.value) {
+            cachedSeoSettings = data.value;
+            setDbSeo(data.value);
+          }
+        }
+
+        const { data: genData } = await supabase
           .from('site_settings')
           .select('value')
-          .eq('key', 'seo_settings')
+          .eq('key', 'general')
           .single();
-        if (data && data.value) {
-          cachedSeoSettings = data.value;
-          setDbSeo(data.value);
+        if (genData && genData.value && genData.value.faviconUrl) {
+          setFavicon(genData.value.faviconUrl);
         }
       } catch (err) {
         // Silent fallback to static props
       }
     };
 
-    fetchSeo();
+    fetchSeoAndFavicon();
   }, []);
 
   // Compute final title, description, and keywords
@@ -174,8 +183,13 @@ export const SEO: React.FC<SEOProps> = ({
       setMetaTag('name', 'twitter:image', finalOgImage);
     }
 
-    // 5. Set Canonical Link
+    // 5. Set Canonical Link & Favicon
     setLinkTag('canonical', finalCanonical);
+    if (favicon) {
+      setLinkTag('icon', favicon);
+      setLinkTag('shortcut icon', favicon);
+      setLinkTag('apple-touch-icon', favicon);
+    }
 
     // 6. Inject Schema.org JSON-LD Script Tags
     const jsonLdScripts: HTMLScriptElement[] = [];
