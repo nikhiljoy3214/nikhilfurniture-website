@@ -5,29 +5,33 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Read .env file in the root
-const envPath = path.resolve(__dirname, '../.env');
-let supabaseUrl = '';
-let supabaseKey = '';
+// Check system process env variables first (common in CI/CD platforms like Vercel)
+let supabaseUrl = process.env.VITE_SUPABASE_URL || '';
+let supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
 
-try {
-  const envContent = fs.readFileSync(envPath, 'utf8');
-  const lines = envContent.split('\n');
-  for (const line of lines) {
-    if (line.startsWith('VITE_SUPABASE_URL=')) {
-      supabaseUrl = line.split('=')[1].trim();
+if (!supabaseUrl || !supabaseKey) {
+  // Read .env file in the root as a local fallback
+  const envPath = path.resolve(__dirname, '../.env');
+  try {
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, 'utf8');
+      const lines = envContent.split('\n');
+      for (const line of lines) {
+        if (line.startsWith('VITE_SUPABASE_URL=')) {
+          supabaseUrl = line.split('=')[1].trim();
+        }
+        if (line.startsWith('VITE_SUPABASE_ANON_KEY=')) {
+          supabaseKey = line.split('=')[1].trim();
+        }
+      }
     }
-    if (line.startsWith('VITE_SUPABASE_ANON_KEY=')) {
-      supabaseKey = line.split('=')[1].trim();
-    }
+  } catch (e) {
+    console.warn('Could not read .env file, checking system process.env...:', e.message);
   }
-} catch (e) {
-  console.error('Error reading .env file:', e.message);
-  process.exit(1);
 }
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('Missing Supabase configuration in .env');
+  console.error('Error: Missing Supabase URL or Anon Key. Ensure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set.');
   process.exit(1);
 }
 
