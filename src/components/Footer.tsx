@@ -156,7 +156,7 @@ export const Footer: React.FC = () => {
             </li>
             <li>
               <a
-                href={footerConfig?.google_maps_url || `https://wa.me/91${footerConfig?.whatsAppNumber || '9746321808'}`}
+                href={`https://wa.me/91${footerConfig?.whatsAppNumber || '9746321808'}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 border border-[#25D366]/20 px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors mt-2"
