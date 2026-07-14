@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Search, SlidersHorizontal, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Product } from '../types';
 import { Image } from '../components/Image';
@@ -11,6 +11,7 @@ export const Products: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [search, setSearch] = useState('');
   const [categorySeo, setCategorySeo] = useState<{ seo_title: string | null; seo_description: string | null } | null>(null);
 
@@ -46,10 +47,10 @@ export const Products: React.FC = () => {
   const [totalCount, setTotalCount] = useState(0);
   const itemsPerPage = 8;
 
-  // Scroll to top when page changes
+  // Scroll to top when filters change (resets user to top of results on fresh filter)
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
+  }, [currentCategory, currentWood, currentSort, search]);
 
   const woodTypes = ['Premium Teak Wood', 'Rosewood', 'Mahogany', 'Walnut Wood', 'Anjili', 'Jackwood'];
   const categories = [
@@ -62,7 +63,11 @@ export const Products: React.FC = () => {
   // Fetch products based on parameters
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true);
+      if (currentPage === 1) {
+        setLoading(true);
+      } else {
+        setLoadingMore(true);
+      }
       try {
         // Step 1: Initialize query (select only required list/card columns to minimize egress!)
         let query = supabase
@@ -105,13 +110,18 @@ export const Products: React.FC = () => {
 
         if (error) throw error;
         if (data) {
-          setProducts(data as Product[]);
+          if (currentPage === 1) {
+            setProducts(data as Product[]);
+          } else {
+            setProducts(prev => [...prev, ...(data as Product[])]);
+          }
           setTotalCount(count || 0);
         }
       } catch (err) {
         console.error('Error loading products:', err);
       } finally {
         setLoading(false);
+        setLoadingMore(false);
       }
     };
 
@@ -410,26 +420,32 @@ export const Products: React.FC = () => {
               </div>
             )}
 
-            {/* Pagination Controls */}
+            {/* Load More Button */}
             {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-4 mt-16 pt-8 border-t border-wood-200/40">
-                <button
-                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                  disabled={currentPage === 1}
-                  className="p-2.5 rounded-full border border-wood-200 bg-white hover:bg-wood-100 disabled:opacity-30 disabled:hover:bg-white text-wood-700 transition-colors"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <span className="text-sm font-semibold font-sans text-wood-800">
-                  Page {currentPage} of {totalPages}
-                </span>
-                <button
-                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                  disabled={currentPage === totalPages}
-                  className="p-2.5 rounded-full border border-wood-200 bg-white hover:bg-wood-100 disabled:opacity-30 disabled:hover:bg-white text-wood-700 transition-colors"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+              <div className="flex flex-col items-center justify-center mt-16 pt-8 border-t border-wood-200/40">
+                <p className="text-xs text-wood-500 font-sans mb-4 uppercase tracking-wider">
+                  Showing <span className="font-bold text-wood-900">{products.length}</span> of{' '}
+                  <span className="font-bold text-wood-900">{totalCount}</span> items
+                </p>
+                {currentPage < totalPages && (
+                  <button
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    disabled={loadingMore}
+                    className="px-8 py-3.5 rounded-xl bg-wood-800 hover:bg-wood-950 disabled:bg-wood-400 disabled:cursor-not-allowed text-white text-xs font-bold uppercase tracking-widest transition-all shadow-sm hover:shadow-md inline-flex items-center gap-2 cursor-pointer"
+                  >
+                    {loadingMore ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Loading...
+                      </>
+                    ) : (
+                      'Load More Pieces'
+                    )}
+                  </button>
+                )}
               </div>
             )}
 

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { ScrollToTop } from '../components/ScrollToTop';
+import { ScrollToTopButton } from '../components/ScrollToTopButton';
 import { supabase } from '../lib/supabase';
 import { Hammer, Phone, MessageSquare } from 'lucide-react';
 
@@ -68,8 +69,9 @@ export const MainLayout: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-wood-50">
       <ScrollToTop />
+      <ScrollToTopButton />
       <Navbar />
-      <main className="flex-grow" style={{ paddingTop: hasAnnouncement ? '124px' : '88px' }}>
+      <main className={`flex-grow ${hasAnnouncement ? 'pt-[116px] sm:pt-[124px]' : 'pt-[72px] sm:pt-[88px]'}`}>
         <Outlet />
       </main>
       <Footer />

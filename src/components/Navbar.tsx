@@ -90,7 +90,6 @@ export const Navbar: React.FC = () => {
   const opacityHex = Math.round(opacityPct * 2.55).toString(16).padStart(2, '0');
 
   const navbarStyle = {
-    top: announcement ? '36px' : '0px',
     backgroundColor: `${hexColor}${opacityHex}`,
     color: headerConfig?.textColor || '#4a3b32',
     borderColor: isScrolled ? `${headerConfig?.textColor || '#4a3b32'}15` : 'transparent'
@@ -100,17 +99,17 @@ export const Navbar: React.FC = () => {
     <>
       {announcement && (
         <div
-          className="fixed top-0 left-0 right-0 z-[100] h-9 flex items-center justify-center text-[10px] font-sans font-bold uppercase tracking-wider gap-3"
+          className="fixed top-0 left-0 right-0 z-[100] h-11 sm:h-9 flex items-center justify-center text-[8.5px] sm:text-[10px] font-sans font-bold uppercase tracking-wider gap-2 sm:gap-3 px-3 sm:px-6"
           style={{
             backgroundColor: announcement.bgColor || '#8B5A2B',
             color: announcement.textColor || '#FFFFFF'
           }}
         >
-          <span>{announcement.text}</span>
+          <span className="truncate max-w-[190px] min-[375px]:max-w-[230px] min-[410px]:max-w-[260px] sm:max-w-none">{announcement.text}</span>
           {announcement.btnText && (
             <Link
               to={announcement.btnLink || '/products'}
-              className="px-2 py-0.5 rounded border border-white/25 bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="px-1.5 py-0.5 rounded border border-white/25 bg-white/10 hover:bg-white/20 text-white transition-colors shrink-0 text-[8px] sm:text-[10px]"
             >
               {announcement.btnText}
             </Link>
@@ -118,7 +117,9 @@ export const Navbar: React.FC = () => {
         </div>
       )}
       <nav
-        className="fixed left-0 right-0 z-50 transition-all duration-500 py-4 shadow-sm border-b"
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 py-4 shadow-sm border-b ${
+          announcement ? 'top-11 sm:top-9' : 'top-0'
+        }`}
         style={navbarStyle}
       >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -127,7 +128,7 @@ export const Navbar: React.FC = () => {
           <img
             src={logoUrl || "/logo.jpg"}
             alt="Nikhil Furniture Logo"
-            className="w-10 h-10 object-cover rounded-full border border-wood-700/20 group-hover:scale-105 transition-transform duration-300"
+            className="w-10 h-10 object-cover rounded-full group-hover:scale-105 transition-transform duration-300"
             onError={(e) => {
               // Fallback if logo.jpg is missing or corrupted
               e.currentTarget.style.display = 'none';
@@ -233,9 +234,12 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[72px] bg-wood-50/95 backdrop-blur-lg z-40 py-8 px-6 flex flex-col gap-4 shadow-lg overflow-y-auto h-[calc(100vh-72px)] animate-slide-up">
+        <div className={`lg:hidden fixed inset-x-0 bottom-0 bg-wood-50/95 backdrop-blur-lg z-40 py-8 px-6 flex flex-col gap-4 shadow-lg overflow-y-auto animate-slide-up ${
+          announcement 
+            ? 'top-[116px] sm:top-[108px] h-[calc(100vh-116px)] sm:h-[calc(100vh-108px)]' 
+            : 'top-[72px] h-[calc(100vh-72px)]'
+        }`}>
           {navLinks.map((link: any) => {
             const isActive = location.pathname === link.path;
             const isExpanded = !!expandedMenus[link.name];

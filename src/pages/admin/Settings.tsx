@@ -391,19 +391,27 @@ export const SettingsPage: React.FC = () => {
                 <span>Show Announcement Bar at top of public website</span>
               </label>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-1">
-                  <label className="text-[9px] uppercase text-wood-500">Announcement Text</label>
-                  <input type="text" value={behaviour.announcement?.text || ''} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, text: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl py-2 px-3 focus:outline-none" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-1 md:col-span-2">
+                  <label className="text-[9px] uppercase text-wood-500 font-bold">Announcement Text</label>
+                  <input type="text" value={behaviour.announcement?.text || ''} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, text: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl py-2 px-3 focus:outline-none focus:border-wood-400 text-sm font-sans" />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1">
+                  <label className="text-[9px] uppercase text-wood-500 font-bold">Button Text (Leave blank to hide)</label>
+                  <input type="text" value={behaviour.announcement?.btnText || ''} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, btnText: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl py-2 px-3 focus:outline-none focus:border-wood-400 text-sm font-sans" placeholder="e.g. View Offers" />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-[9px] uppercase text-wood-500 font-bold">Button Link</label>
+                  <input type="text" value={behaviour.announcement?.btnLink || ''} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, btnLink: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl py-2 px-3 focus:outline-none focus:border-wood-400 text-sm font-sans" placeholder="e.g. /products or external link" />
+                </div>
+                <div className="grid grid-cols-2 gap-4 md:col-span-2">
                   <div className="flex flex-col gap-1">
-                    <label className="text-[9px] uppercase text-wood-500">Background Color (Hex)</label>
-                    <input type="color" value={behaviour.announcement?.bgColor || '#8B5A2B'} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, bgColor: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl h-8 p-1 focus:outline-none" />
+                    <label className="text-[9px] uppercase text-wood-500 font-bold">Background Color (Hex)</label>
+                    <input type="color" value={behaviour.announcement?.bgColor || '#8B5A2B'} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, bgColor: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl h-8 p-1 focus:outline-none focus:border-wood-400" />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <label className="text-[9px] uppercase text-wood-500">Text Color (Hex)</label>
-                    <input type="color" value={behaviour.announcement?.textColor || '#FFFFFF'} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, textColor: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl h-8 p-1 focus:outline-none" />
+                    <label className="text-[9px] uppercase text-wood-500 font-bold">Text Color (Hex)</label>
+                    <input type="color" value={behaviour.announcement?.textColor || '#FFFFFF'} onChange={(e) => { setIsDirty(true); setBehaviour({ ...behaviour, announcement: { ...behaviour.announcement, textColor: e.target.value } }); }} className="w-full bg-white border border-wood-200 rounded-xl h-8 p-1 focus:outline-none focus:border-wood-400" />
                   </div>
                 </div>
               </div>
