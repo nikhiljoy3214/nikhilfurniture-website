@@ -45,7 +45,7 @@ export const Products: React.FC = () => {
   // Pagination & Filtering state
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
-  const itemsPerPage = 8;
+  const itemsPerPage = 12;
 
   // Scroll to top when filters change (resets user to top of results on fresh filter)
   useEffect(() => {
