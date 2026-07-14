@@ -151,13 +151,14 @@ export const SEO: React.FC<SEOProps> = ({
     };
 
     const setLinkTag = (relVal: string, hrefVal: string) => {
-      let element = document.querySelector(`link[rel="${relVal}"]`);
-      if (!element) {
-        element = document.createElement('link');
-        element.setAttribute('rel', relVal);
-        document.head.appendChild(element);
-      }
+      // Find and remove any existing link tags with this rel to force browser repaint/refresh
+      const existingElements = document.querySelectorAll(`link[rel="${relVal}"]`);
+      existingElements.forEach(el => el.remove());
+
+      const element = document.createElement('link');
+      element.setAttribute('rel', relVal);
       element.setAttribute('href', hrefVal);
+      document.head.appendChild(element);
     };
 
     // 2. Set Standard Meta Tags
@@ -186,9 +187,10 @@ export const SEO: React.FC<SEOProps> = ({
     // 5. Set Canonical Link & Favicon
     setLinkTag('canonical', finalCanonical);
     if (favicon) {
-      setLinkTag('icon', favicon);
-      setLinkTag('shortcut icon', favicon);
-      setLinkTag('apple-touch-icon', favicon);
+      const cacheBustingFavicon = `${favicon}${favicon.includes('?') ? '&' : '?'}v=2`;
+      setLinkTag('icon', cacheBustingFavicon);
+      setLinkTag('shortcut icon', cacheBustingFavicon);
+      setLinkTag('apple-touch-icon', cacheBustingFavicon);
     }
 
     // 6. Inject Schema.org JSON-LD Script Tags
