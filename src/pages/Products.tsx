@@ -46,6 +46,11 @@ export const Products: React.FC = () => {
   const [totalCount, setTotalCount] = useState(0);
   const itemsPerPage = 8;
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   const woodTypes = ['Premium Teak Wood', 'Rosewood', 'Mahogany', 'Walnut Wood', 'Anjili', 'Jackwood'];
   const categories = [
     'Wooden Sofa Sets', 'Corner Sofa Sets', 'Wooden Dining Tables',
