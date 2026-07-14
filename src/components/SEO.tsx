@@ -407,7 +407,8 @@ export const SEO: React.FC<SEOProps> = ({
         }
       });
     };
-  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, ogType, finalOgImage, breadcrumbs, faqs, schemaType, productSchemaData]);
+  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, ogType, finalOgImage, breadcrumbs, faqs, schemaType, productSchemaData, favicon]);
+
 
   return null;
 };
