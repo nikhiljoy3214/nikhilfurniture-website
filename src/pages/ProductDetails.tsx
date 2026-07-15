@@ -610,12 +610,13 @@ export const ProductDetails: React.FC = () => {
               You May Also Like
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {relatedProducts.map((p) => (
-                <Link
-                  key={p.id}
-                  to={`/products/${p.slug}`}
-                  className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-wood-200/30 premium-card-shadow"
-                >
+               {relatedProducts.map((p) => (
+                 <Link
+                   key={p.id}
+                   to={`/products/${p.slug}`}
+                   replace
+                   className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-wood-200/30 premium-card-shadow"
+                 >
                   <div className="h-48 relative overflow-hidden">
                     <Image
                       src={p.featured_image}
@@ -653,6 +654,7 @@ export const ProductDetails: React.FC = () => {
                 <Link
                   key={p.id}
                   to={`/products/${p.slug}`}
+                  replace
                   className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-wood-200/30 premium-card-shadow"
                 >
                   <div className="h-48 relative overflow-hidden">

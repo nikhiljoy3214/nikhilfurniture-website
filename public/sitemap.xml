@@ -304,6 +304,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://nikhilfurniture.com/products/nilambur-6seater-table-mahogany</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
+      <image:title>Nilambur 6-Seater Table - Mahogany - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Mahogany with a rich Satin Wax Finish finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://nikhilfurniture.com/products/heritage-teak-sofa-set-rosewood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -344,16 +354,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/royal-corner-sofa-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Royal Corner Sofa - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Rosewood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/lshape-premium-sectional-mahogany</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -371,6 +371,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
       <image:title>Grand Malabar Corner Suite - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Walnut Wood with a rich Satin Wax Finish finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/royal-corner-sofa-rosewood</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
+      <image:title>Royal Corner Sofa - Rosewood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Rosewood with a rich Teak Gloss finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -401,16 +411,6 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
       <image:title>Signature Dining Collection - Rosewood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Rosewood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/nilambur-6seater-table-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Nilambur 6-Seater Table - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Mahogany with a rich Satin Wax Finish finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -474,6 +474,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://nikhilfurniture.com/products/elegance-wooden-cot-rosewood</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
+      <image:title>Elegance Wooden Cot - Rosewood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Rosewood with a rich Natural Matte finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://nikhilfurniture.com/products/crossback-teak-chair-jackwood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -491,16 +501,6 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
       <image:title>Modern Upholstered Chair - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Premium Teak Wood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/elegance-wooden-cot-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Elegance Wooden Cot - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Rosewood with a rich Natural Matte finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -534,16 +534,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/heritage-almirah-with-mirror-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Heritage Almirah with Mirror - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Mahogany with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/3door-teak-wardrobe-walnut-wood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -551,6 +541,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
       <image:title>3-Door Teak Wardrobe - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Walnut Wood with a rich Walnut Stain finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/heritage-almirah-with-mirror-mahogany</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
+      <image:title>Heritage Almirah with Mirror - Mahogany - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Mahogany with a rich Teak Gloss finish.</image:caption>
     </image:image>
   </url>
   <url>
