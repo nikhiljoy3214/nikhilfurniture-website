@@ -11,9 +11,27 @@ export const Navbar: React.FC = () => {
   const { wishlist } = useWishlist();
   const location = useLocation();
 
-  const [announcement, setAnnouncement] = useState<any>(null);
-  const [logoUrl, setLogoUrl] = useState<string>('');
-  const [headerConfig, setHeaderConfig] = useState<any>(null);
+  const [announcement, setAnnouncement] = useState<any>(() => {
+    const saved = localStorage.getItem('cached_announcement');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {}
+    }
+    return null;
+  });
+  const [logoUrl, setLogoUrl] = useState<string>(() => {
+    return localStorage.getItem('cached_logo_url') || '';
+  });
+  const [headerConfig, setHeaderConfig] = useState<any>(() => {
+    const saved = localStorage.getItem('cached_header_config');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {}
+    }
+    return null;
+  });
   const [navCategories, setNavCategories] = useState<any[]>([]);
 
   useEffect(() => {
@@ -22,16 +40,22 @@ export const Navbar: React.FC = () => {
         const { data: behData } = await supabase.from('site_settings').select('*').eq('key', 'website_behaviour').single();
         if (behData && behData.value && behData.value.announcement?.enabled && behData.value.announcement?.text) {
           setAnnouncement(behData.value.announcement);
+          localStorage.setItem('cached_announcement', JSON.stringify(behData.value.announcement));
+        } else {
+          setAnnouncement(null);
+          localStorage.removeItem('cached_announcement');
         }
 
         const { data: genData } = await supabase.from('site_settings').select('*').eq('key', 'general').single();
         if (genData && genData.value && genData.value.logoUrl) {
           setLogoUrl(genData.value.logoUrl);
+          localStorage.setItem('cached_logo_url', genData.value.logoUrl);
         }
 
         const { data: headData } = await supabase.from('site_settings').select('*').eq('key', 'header_settings').single();
         if (headData && headData.value) {
           setHeaderConfig(headData.value);
+          localStorage.setItem('cached_header_config', JSON.stringify(headData.value));
         }
 
         const { data: catData } = await supabase.from('categories').select('name, slug');

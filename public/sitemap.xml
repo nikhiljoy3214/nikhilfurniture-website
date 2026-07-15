@@ -364,16 +364,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/grand-malabar-corner-suite-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Grand Malabar Corner Suite - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Walnut Wood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/royal-corner-sofa-rosewood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -384,13 +374,13 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/nilambur-sectional-sofa-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/grand-malabar-corner-suite-walnut-wood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Nilambur Sectional Sofa - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Anjili with a rich Natural Matte finish.</image:caption>
+      <image:title>Grand Malabar Corner Suite - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Walnut Wood with a rich Satin Wax Finish finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -404,6 +394,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://nikhilfurniture.com/products/nilambur-sectional-sofa-anjili</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
+      <image:title>Nilambur Sectional Sofa - Anjili - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Anjili with a rich Natural Matte finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://nikhilfurniture.com/products/signature-dining-collection-rosewood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -414,16 +414,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/mahogany-oval-dining-table-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Mahogany Oval Dining Table - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Walnut Wood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/rustic-bench-dining-set-anjili</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -431,6 +421,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
       <image:title>Rustic Bench Dining Set - Anjili - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/mahogany-oval-dining-table-walnut-wood</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
+      <image:title>Mahogany Oval Dining Table - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Walnut Wood with a rich Natural Matte finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -504,16 +504,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/malabar-queen-bed-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Malabar Queen Bed - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Walnut Wood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/classic-poster-cot-anjili</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -531,6 +521,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
       <image:title>Traditional Kerala Cot - Jackwood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Jackwood with a rich Satin Wax Finish finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/malabar-queen-bed-walnut-wood</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
+      <image:title>Malabar Queen Bed - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Walnut Wood with a rich Teak Gloss finish.</image:caption>
     </image:image>
   </url>
   <url>

@@ -187,6 +187,20 @@ export const SettingsPage: React.FC = () => {
       ]);
 
       if (error) throw error;
+
+      // Update active browser cache immediately to synchronize layouts
+      if (behaviour?.announcement?.enabled && behaviour?.announcement?.text) {
+        localStorage.setItem('cached_announcement', JSON.stringify(behaviour.announcement));
+      } else {
+        localStorage.removeItem('cached_announcement');
+      }
+      if (general?.logoUrl) {
+        localStorage.setItem('cached_logo_url', general.logoUrl);
+      }
+      if (headerConfig) {
+        localStorage.setItem('cached_header_config', JSON.stringify(headerConfig));
+      }
+
       setIsDirty(false);
       alert('Congratulations! Global settings published live successfully!');
     } catch (err: any) {
