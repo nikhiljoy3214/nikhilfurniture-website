@@ -28,6 +28,7 @@ export const ScrollToTop = () => {
     });
 
     lenisRef.current = lenis;
+    (window as any).lenis = lenis;
 
     // 3. Keep GSAP ScrollTrigger in sync with the smooth scroll instance
     lenis.on('scroll', ScrollTrigger.update);
@@ -67,11 +68,26 @@ export const ScrollToTop = () => {
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
       lenisRef.current = null;
+      delete (window as any).lenis;
     };
   }, []);
 
   // 8. Handle navigation changes: snap to top instantly and recalculate trigger points
   useEffect(() => {
+    // Clean up stored state when navigating to any page other than products catalog or product details
+    if (pathname !== '/products' && !pathname.startsWith('/products/')) {
+      sessionStorage.removeItem('products_list_restore');
+      sessionStorage.removeItem('products_list_state');
+    }
+
+    // If restoring the scroll position on the products catalog page, bypass the snap-to-top behavior
+    if (sessionStorage.getItem('products_list_restore') === 'true' && pathname === '/products') {
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 80);
+      return () => clearTimeout(timer);
+    }
+
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     } else {

@@ -29,6 +29,11 @@ export const ProductDetails: React.FC = () => {
   const [recentlyViewed, setRecentlyViewed] = useState<any[]>([]);
   const viewTrackedSlug = useRef<string | null>(null);
 
+  // Set the restore flag on mount so the products page knows we came from detail view
+  useEffect(() => {
+    sessionStorage.setItem('products_list_restore', 'true');
+  }, []);
+
   useEffect(() => {
     if (product) {
       const specs = product.specifications || {};

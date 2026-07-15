@@ -214,6 +214,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://nikhilfurniture.com/products/ornate-main-door-frame-anjili</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
+      <image:title>Ornate Main Door Frame - Anjili - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://nikhilfurniture.com/products/wooden-sofa-set-orchid</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -224,13 +234,73 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/ornate-main-door-frame-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/modern-solid-wood-dining-table-premium-teak-wood</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
+      <image:title>Modern Solid Wood Dining Table - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Premium Teak Wood with a rich Walnut Stain finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/royal-king-size-cot-mahogany</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
+      <image:title>Royal King Size Cot - Mahogany - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Mahogany with a rich Glossy Honey finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/heritage-carver-chair-anjili</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
+      <image:title>Heritage Carver Chair - Anjili - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Anjili with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/traditional-kerala-settee-anjili</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
+      <image:title>Traditional Kerala Settee - Anjili - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/minimalist-divider-shelf-anjili</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Ornate Main Door Frame - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
+      <image:title>Minimalist Divider Shelf - Anjili - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Anjili with a rich Walnut Stain finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/royal-mahogany-bookshelf-walnut-wood</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
+      <image:title>Royal Mahogany Bookshelf - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Walnut Wood with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/compact-wooden-wardrobe-premium-teak-wood</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
+      <image:title>Compact Wooden Wardrobe - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Premium Teak Wood with a rich Glossy Honey finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -374,16 +444,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/modern-solid-wood-dining-table-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Modern Solid Wood Dining Table - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Premium Teak Wood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/elegance-dining-chair-rosewood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -411,16 +471,6 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
       <image:title>Classic Slatted Chair - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Walnut Wood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/heritage-carver-chair-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Heritage Carver Chair - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Anjili with a rich Teak Gloss finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -454,16 +504,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/royal-king-size-cot-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Royal King Size Cot - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Mahogany with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/malabar-queen-bed-walnut-wood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -494,16 +534,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/premium-kerala-wardrobe-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Premium Kerala Wardrobe - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Rosewood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/heritage-almirah-with-mirror-mahogany</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -524,13 +554,13 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/royal-4door-wardrobe-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/premium-kerala-wardrobe-rosewood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Royal 4-Door Wardrobe - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Anjili with a rich Satin Wax Finish finish.</image:caption>
+      <image:title>Premium Kerala Wardrobe - Rosewood - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Rosewood with a rich Glossy Honey finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -544,16 +574,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/compact-wooden-wardrobe-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Compact Wooden Wardrobe - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Premium Teak Wood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/walnut-teapoy-rosewood</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -561,6 +581,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
       <image:title>Walnut Teapoy - Rosewood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted teapoys made from high-quality Rosewood with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/royal-4door-wardrobe-anjili</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
+      <image:title>Royal 4-Door Wardrobe - Anjili - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Anjili with a rich Satin Wax Finish finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -641,16 +671,6 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
       <image:title>Carved Dining Bench - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Walnut Wood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/traditional-kerala-settee-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Traditional Kerala Settee - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -751,26 +771,6 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
       <image:title>Classic Open Bookcase - Mahogany - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Mahogany with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/royal-mahogany-bookshelf-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Royal Mahogany Bookshelf - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Walnut Wood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/minimalist-divider-shelf-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Minimalist Divider Shelf - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Anjili with a rich Walnut Stain finish.</image:caption>
     </image:image>
   </url>
   <url>

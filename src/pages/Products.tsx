@@ -9,10 +9,36 @@ import { WishlistButton } from '../components/WishlistButton';
 
 export const Products: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Load restored state if user came back from a product details page
+  const shouldRestore = sessionStorage.getItem('products_list_restore') === 'true';
+  const restoredState = (() => {
+    if (shouldRestore) {
+      const saved = sessionStorage.getItem('products_list_state');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          const currentCategory = searchParams.get('category') || '';
+          const currentWood = searchParams.get('wood_type') || '';
+          const currentSort = searchParams.get('sort') || 'default';
+          if (
+            parsed.filters?.currentCategory === currentCategory &&
+            parsed.filters?.currentWood === currentWood &&
+            parsed.filters?.currentSort === currentSort
+          ) {
+            return parsed;
+          }
+        } catch (e) {
+          console.error('Error parsing restored products state:', e);
+        }
+      }
+    }
+    return null;
+  })();
+
+  const [products, setProducts] = useState<Product[]>(() => restoredState?.products || []);
+  const [loading, setLoading] = useState(() => !restoredState);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState<string>(() => restoredState?.search || '');
   const [categorySeo, setCategorySeo] = useState<{ seo_title: string | null; seo_description: string | null } | null>(null);
 
   const currentCategory = searchParams.get('category') || '';
@@ -43,14 +69,73 @@ export const Products: React.FC = () => {
   }, [currentCategory]);
   
   // Pagination & Filtering state
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalCount, setTotalCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState<number>(() => restoredState?.currentPage || 1);
+  const [totalCount, setTotalCount] = useState<number>(() => restoredState?.totalCount || 0);
   const itemsPerPage = 12;
 
   // Scroll to top when filters change (resets user to top of results on fresh filter)
   useEffect(() => {
+    if (sessionStorage.getItem('products_list_restore') === 'true') {
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentCategory, currentWood, currentSort, search]);
+
+  // Save products catalog state to session storage on any changes
+  useEffect(() => {
+    if (products.length > 0 || currentPage === 1) {
+      let scrollPosition = undefined;
+      const existing = sessionStorage.getItem('products_list_state');
+      if (existing) {
+        try {
+          const parsed = JSON.parse(existing);
+          scrollPosition = parsed.scrollPosition;
+        } catch (e) {}
+      }
+
+      sessionStorage.setItem('products_list_state', JSON.stringify({
+        products,
+        currentPage,
+        totalCount,
+        search,
+        filters: { currentCategory, currentWood, currentSort },
+        scrollPosition // Keep the scroll position preserved from overwrites
+      }));
+    }
+  }, [products, currentPage, totalCount, search, currentCategory, currentWood, currentSort]);
+
+  // Scroll restoration on mount
+  useEffect(() => {
+    if (restoredState && typeof restoredState.scrollPosition === 'number') {
+      const timer = setTimeout(() => {
+        const lenisInst = (window as any).lenis;
+        if (lenisInst) {
+          // Trigger Lenis scrolling directly to bypass snap-to-top hijacking
+          lenisInst.scrollTo(restoredState.scrollPosition, { immediate: true });
+        } else {
+          window.scrollTo(0, restoredState.scrollPosition);
+        }
+        sessionStorage.removeItem('products_list_restore');
+      }, 250); // Safe timeout window to allow DOM content paint
+      return () => clearTimeout(timer);
+    } else {
+      sessionStorage.removeItem('products_list_restore');
+    }
+  }, []);
+
+  // Capture the scroll position immediately upon clicking a product card (before pathname changes)
+  const saveScrollBeforeNavigate = () => {
+    const saved = sessionStorage.getItem('products_list_state');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        parsed.scrollPosition = window.scrollY;
+        sessionStorage.setItem('products_list_state', JSON.stringify(parsed));
+      } catch (e) {
+        console.error('Error saving scroll position on click:', e);
+      }
+    }
+  };
 
   const woodTypes = ['Premium Teak Wood', 'Rosewood', 'Mahogany', 'Walnut Wood', 'Anjili', 'Jackwood'];
   const categories = [
@@ -63,6 +148,11 @@ export const Products: React.FC = () => {
   // Fetch products based on parameters
   useEffect(() => {
     const fetchProducts = async () => {
+      // If catalog state is being restored, skip fetching to prevent duplications and query race conditions
+      if (sessionStorage.getItem('products_list_restore') === 'true') {
+        return;
+      }
+
       if (currentPage === 1) {
         setLoading(true);
       } else {
@@ -130,6 +220,9 @@ export const Products: React.FC = () => {
 
   // Reset pagination on filter change
   useEffect(() => {
+    if (sessionStorage.getItem('products_list_restore') === 'true') {
+      return;
+    }
     setCurrentPage(1);
   }, [currentCategory, currentWood, currentSort, search]);
 
@@ -358,6 +451,7 @@ export const Products: React.FC = () => {
                 {products.map((product) => (
                   <div
                     key={product.id}
+                    onClick={saveScrollBeforeNavigate}
                     className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-wood-200/30 premium-card-shadow relative"
                   >
                     {/* Wishlist Button Overlay */}
