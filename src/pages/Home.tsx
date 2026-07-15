@@ -189,7 +189,7 @@ export const Home: React.FC = () => {
         }
       });
 
-      gsap.to('.hero-content-wrapper', {
+      gsap.to('.hero-text-block', {
         yPercent: 12,
         scrollTrigger: {
           trigger: heroRef.current,
@@ -504,7 +504,7 @@ export const Home: React.FC = () => {
           ref={heroRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative min-h-screen w-full bg-wood-950 text-white overflow-hidden select-none pt-8 pb-6 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-24"
+          className="relative min-h-[calc(100vh-116px)] lg:min-h-[calc(100vh-124px)] w-full bg-wood-950 text-white overflow-hidden select-none pt-8 pb-10 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-24 flex flex-col justify-center"
         >
           <div ref={bgRef} className="absolute inset-0 z-0 scale-105 hero-bg">
             <img
@@ -523,8 +523,8 @@ export const Home: React.FC = () => {
             </svg>
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 md:px-12 z-10 w-full relative flex flex-col justify-between gap-6 sm:gap-12 lg:gap-16 hero-content-wrapper">
-            <div className="max-w-3xl mt-0">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 z-10 w-full relative flex flex-col gap-6 sm:gap-12 lg:gap-16 hero-content-wrapper">
+            <div className="max-w-3xl mt-0 hero-text-block">
               <div className="hero-badge inline-flex items-center gap-2 bg-gold-400/10 border border-gold-400/20 px-4 py-1.5 rounded-full text-gold-300 text-[10px] font-bold uppercase tracking-[0.2em] mb-6 opacity-0 translate-y-4 font-sans">
                 <Sparkles className="w-3 h-3" />
                 {activeHero.badge}
