@@ -323,6 +323,17 @@ export const ProductEditor: React.FC<ProductEditorProps> = ({
     setActiveTab('general');
   }, [product, isOpen]);
 
+  // Automatically set 1st gallery image to featured image if not already set or invalid
+  useEffect(() => {
+    if (galleryImages.length > 0) {
+      if (!featuredImage || !galleryImages.includes(featuredImage)) {
+        setFeaturedImage(galleryImages[0]);
+      }
+    } else {
+      setFeaturedImage('');
+    }
+  }, [galleryImages, featuredImage]);
+
   // Slugify Helper
   const slugify = (text: string) => {
     return text
@@ -745,8 +756,8 @@ export const ProductEditor: React.FC<ProductEditorProps> = ({
                 <div className="md:col-span-4 flex flex-col gap-2">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Main Thumbnail</span>
                   {featuredImage ? (
-                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-wood-200 shadow-sm bg-wood-50">
-                      <img src={featuredImage} alt="Featured Preview" className="w-full h-full object-cover" />
+                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-wood-200 shadow-sm bg-white p-2">
+                      <img src={featuredImage} alt="Featured Preview" className="w-full h-full object-contain" />
                       <button
                         type="button"
                         onClick={() => {
@@ -776,11 +787,11 @@ export const ProductEditor: React.FC<ProductEditorProps> = ({
                         return (
                           <div 
                             key={index} 
-                            className={`relative rounded-xl overflow-hidden aspect-[4/3] border shadow-sm group bg-wood-50 ${
+                            className={`relative rounded-xl overflow-hidden aspect-[4/3] border shadow-sm group bg-white p-2 ${
                               isFeaturedVal ? 'border-gold-400 ring-1 ring-gold-400' : 'border-wood-200/50'
                             }`}
                           >
-                            <img src={img} alt={`Gallery item ${index}`} className="w-full h-full object-cover" />
+                            <img src={img} alt={`Gallery item ${index}`} className="w-full h-full object-contain" />
                             
                             <div className="absolute inset-0 bg-wood-950/60 flex items-center justify-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                               <button

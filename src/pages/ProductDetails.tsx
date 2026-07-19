@@ -617,11 +617,12 @@ export const ProductDetails: React.FC = () => {
                    replace
                    className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-wood-200/30 premium-card-shadow"
                  >
-                  <div className="h-48 relative overflow-hidden">
+                  <div className="aspect-[4/3] w-full relative overflow-hidden bg-white p-2 border-b border-wood-100/30">
                     <Image
                       src={p.featured_image}
                       alt={p.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      objectFit="contain"
+                      className="w-full h-full group-hover:scale-[1.03] transition-transform duration-700"
                     />
                   </div>
                   <div className="p-5">
@@ -657,11 +658,12 @@ export const ProductDetails: React.FC = () => {
                   replace
                   className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-wood-200/30 premium-card-shadow"
                 >
-                  <div className="h-48 relative overflow-hidden">
+                  <div className="aspect-[4/3] w-full relative overflow-hidden bg-white p-2 border-b border-wood-100/30">
                     <Image
                       src={p.featured_image}
                       alt={p.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      objectFit="contain"
+                      className="w-full h-full group-hover:scale-[1.03] transition-transform duration-700"
                     />
                   </div>
                   <div className="p-5">

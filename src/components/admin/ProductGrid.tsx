@@ -92,11 +92,11 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
             </div>
 
             {/* Thumbnail */}
-            <div className="aspect-[4/3] w-full overflow-hidden bg-wood-50 border-b border-wood-100 relative">
+            <div className="aspect-[4/3] w-full overflow-hidden bg-white p-2 border-b border-wood-100 relative">
               <img
                 src={p.featured_image}
                 alt={p.name}
-                className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
+                className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
               />
               <span className={`absolute bottom-3 left-3 text-[9px] font-bold px-2 py-0.5 rounded border capitalize bg-white/90 shadow-sm ${getStatusColor(productStatus)}`}>
                 {productStatus}

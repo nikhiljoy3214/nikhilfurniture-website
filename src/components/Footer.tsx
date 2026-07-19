@@ -129,7 +129,7 @@ export const Footer: React.FC = () => {
             </li>
             <li className="flex items-center gap-3">
               <Mail className="w-4 h-4 text-wood-400 shrink-0" />
-              <a href={`mailto:${footerConfig?.email || 'info@nikhilfurniture.com'}`} className="hover:text-white transition-colors">{footerConfig?.email || 'info@nikhilfurniture.com'}</a>
+              <a href={`mailto:${footerConfig?.email || 'thekkekaranikhilfurniture@gmail.com'}`} className="hover:text-white transition-colors">{footerConfig?.email || 'thekkekaranikhilfurniture@gmail.com'}</a>
             </li>
           </ul>
         </div>

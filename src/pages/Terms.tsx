@@ -49,7 +49,7 @@ export const Terms: React.FC = () => {
           </p>
 
           <p className="mt-8 text-xs text-wood-500 font-semibold border-t border-wood-100 pt-4">
-            Last Updated: July 11, 2026. For enquiries, please email info@nikhilfurniture.com.
+            Last Updated: July 11, 2026. For enquiries, please email thekkekaranikhilfurniture@gmail.com.
           </p>
         </div>
       </div>

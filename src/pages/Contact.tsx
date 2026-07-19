@@ -26,7 +26,7 @@ const defaultGeneralConfig = {
   },
   phoneNumbers: ['9746321808', '9447241559', '9745334644'],
   whatsAppNumber: '9746321808',
-  email: 'info@nikhilfurniture.com',
+  email: 'thekkekaranikhilfurniture@gmail.com',
   googleMapsUrl: 'https://maps.google.com/maps?q=Thekkekara+Nikhil+furniture,Pudukkad,Kerala&hl=en&z=17&output=embed',
   workingHours: '9:00 AM - 7:00 PM (Monday - Saturday)',
   facebookUrl: 'https://www.facebook.com/profile.php?id=100065195572493',

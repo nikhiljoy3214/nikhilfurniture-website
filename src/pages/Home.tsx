@@ -134,18 +134,14 @@ export const Home: React.FC = () => {
     if (loading) return;
 
     const ctx = gsap.context(() => {
-      // 1. Hero Timeline
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      tl.fromTo('.hero-bg', 
-        { scale: 1.06 }, 
-        { scale: 1.01, duration: 2.5, ease: 'power2.out' }
-      );
-
-      tl.to('.hero-badge', { opacity: 1, y: 0, duration: 0.8 }, '-=2.0')
-        .to('.hero-title', { opacity: 1, y: 0, duration: 1.0 }, '-=1.6')
-        .to('.hero-tagline', { opacity: 1, y: 0, duration: 0.8 }, '-=1.2')
-        .to('.hero-cta', { opacity: 1, y: 0, duration: 0.8 }, '-=0.8');
+      // 1. Snappy & Immediate Hero Entrance Animations
+      gsap.to(['.hero-badge', '.hero-title', '.hero-tagline', '.hero-cta'], {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out'
+      });
 
       // Setup stats animate values
       const targetYears = homeConfig?.stats?.years?.number ?? 30;
@@ -153,10 +149,12 @@ export const Home: React.FC = () => {
       const targetFamilies = homeConfig?.stats?.families?.number ?? 8000;
       const targetCraftsmanship = homeConfig?.stats?.craftsmanship?.number ?? 45;
 
-      tl.to('.hero-stats-wrapper', { 
+      gsap.to('.hero-stats-wrapper', { 
         opacity: 1, 
         y: 0, 
-        duration: 0.8,
+        duration: 0.6,
+        delay: 0.35,
+        ease: 'power2.out',
         onStart: () => {
           const statsObj = { years: 0, delivered: 0, families: 0, craftsmanship: 0 };
           gsap.to(statsObj, {
@@ -164,8 +162,8 @@ export const Home: React.FC = () => {
             delivered: targetDelivered,
             families: targetFamilies,
             craftsmanship: targetCraftsmanship,
-            duration: 2.2,
-            ease: 'power2.out',
+            duration: 1.5,
+            ease: 'power1.out',
             onUpdate: () => {
               setStats({
                 years: Math.round(statsObj.years),
@@ -176,19 +174,9 @@ export const Home: React.FC = () => {
             }
           });
         }
-      }, '-=0.4');
-
-      // 2. Hero scroll parallax triggers
-      gsap.to('.hero-bg', {
-        scale: 1.15,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
       });
 
+      // 2. Hero text scroll parallax trigger (static bg)
       gsap.to('.hero-text-block', {
         yPercent: 12,
         scrollTrigger: {
@@ -506,7 +494,7 @@ export const Home: React.FC = () => {
           onMouseLeave={handleMouseLeave}
           className="relative min-h-[calc(100vh-116px)] lg:min-h-[calc(100vh-124px)] w-full bg-wood-950 text-white overflow-hidden select-none pt-8 pb-10 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-24 flex flex-col justify-center"
         >
-          <div ref={bgRef} className="absolute inset-0 z-0 scale-105 hero-bg">
+          <div ref={bgRef} className="absolute inset-0 z-0 hero-bg">
             <img
               src={activeHero.featured_image}
               alt="Showroom premium furniture lifestyle"
@@ -804,12 +792,13 @@ export const Home: React.FC = () => {
                     key={product.id}
                     className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-wood-200/30 premium-card-shadow relative"
                   >
-                    <div className="h-64 relative overflow-hidden">
+                    <div className="aspect-[4/3] w-full relative overflow-hidden bg-white p-2 border-b border-wood-100/30">
                       <Link to={`/products/${product.slug}`} className="block h-full w-full">
                         <Image
                           src={product.featured_image}
                           alt={product.alt_text || product.name}
-                          className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+                          objectFit="contain"
+                          className="w-full h-full group-hover:scale-[1.03] transition-transform duration-700"
                         />
                       </Link>
                       <div className="absolute top-4 left-4 z-10 flex gap-2">

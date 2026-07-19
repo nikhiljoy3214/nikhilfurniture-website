@@ -5,6 +5,7 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   alt: string;
   className?: string;
   aspectRatio?: 'video' | 'square' | 'portrait' | 'auto';
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -12,6 +13,7 @@ export const Image: React.FC<ImageProps> = ({
   alt,
   className = '',
   aspectRatio = 'auto',
+  objectFit = 'cover',
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,7 +43,7 @@ export const Image: React.FC<ImageProps> = ({
   else if (aspectRatio === 'portrait') aspectClass = 'aspect-[3/4]';
 
   return (
-    <div className={`relative overflow-hidden bg-wood-100 ${aspectClass} ${className}`}>
+    <div className={`relative overflow-hidden ${objectFit === 'contain' ? 'bg-white' : 'bg-wood-100'} ${aspectClass} ${className}`}>
       {/* Blurred image placeholder or skeleton loader */}
       {!isLoaded && !error && (
         <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-wood-100 via-wood-200 to-wood-100 flex items-center justify-center">
@@ -84,7 +86,7 @@ export const Image: React.FC<ImageProps> = ({
         loading="lazy"
         onLoad={() => setIsLoaded(true)}
         onError={() => setError(true)}
-        className={`w-full h-full object-cover transition-opacity duration-700 ease-out ${
+        className={`w-full h-full object-${objectFit} transition-opacity duration-700 ease-out ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         {...props}

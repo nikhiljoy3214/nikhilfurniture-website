@@ -459,11 +459,12 @@ export const Products: React.FC = () => {
                       <WishlistButton product={product} />
                     </div>
 
-                    <Link to={`/products/${product.slug}`} className="block h-64 relative overflow-hidden">
+                    <Link to={`/products/${product.slug}`} className="block aspect-[4/3] w-full relative overflow-hidden bg-white p-2 border-b border-wood-100/30">
                       <Image
                         src={product.featured_image}
                         alt={product.alt_text || product.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        objectFit="contain"
+                        className="w-full h-full group-hover:scale-[1.03] transition-transform duration-700"
                       />
                       {/* Flag badges */}
                       {product.is_new_arrival && (

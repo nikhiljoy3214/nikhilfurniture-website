@@ -81,8 +81,8 @@ export const Wishlist: React.FC = () => {
                   className="bg-white rounded-3xl p-6 border border-wood-200/40 shadow-sm flex flex-col md:flex-row items-center gap-6 group hover:border-wood-300 transition-all duration-300 relative"
                 >
                   {/* Thumbnail Box */}
-                  <Link to={`/products/${item.slug}`} className="w-full md:w-36 h-28 rounded-2xl overflow-hidden shrink-0">
-                    <Image src={item.featured_image} alt={item.name} className="w-full h-full object-cover" />
+                  <Link to={`/products/${item.slug}`} className="w-full md:w-36 h-28 rounded-2xl overflow-hidden shrink-0 bg-white p-2">
+                    <Image src={item.featured_image} alt={item.name} objectFit="contain" className="w-full h-full" />
                   </Link>
 
                   {/* Metadata */}
