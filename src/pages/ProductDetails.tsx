@@ -6,6 +6,7 @@ import type { Product } from '../types';
 import { Image } from '../components/Image';
 import { SEO } from '../components/SEO';
 import { WishlistButton } from '../components/WishlistButton';
+import { EnquiryModal } from '../components/EnquiryModal';
 
 const woodVariants = [
   { name: 'Premium Teak Wood', multiplier: 1.2 },
@@ -27,6 +28,7 @@ export const ProductDetails: React.FC = () => {
   const [selectedWood, setSelectedWood] = useState<string>('Premium Teak Wood');
   const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
   const [recentlyViewed, setRecentlyViewed] = useState<any[]>([]);
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const viewTrackedSlug = useRef<string | null>(null);
 
   // Set the restore flag on mount so the products page knows we came from detail view
@@ -516,13 +518,14 @@ export const ProductDetails: React.FC = () => {
                   <Phone className="w-3.5 h-3.5" />
                   Call Showroom
                 </a>
-                <Link
-                  to="/contact"
-                  className="bg-white border border-wood-300 hover:bg-wood-100/50 text-wood-800 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+                <button
+                  type="button"
+                  onClick={() => setIsEnquiryModalOpen(true)}
+                  className="bg-white border border-wood-300 hover:bg-wood-100/50 text-wood-800 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Info className="w-3.5 h-3.5" />
                   Request Custom
-                </Link>
+                </button>
               </div>
             </div>
 
@@ -687,6 +690,13 @@ export const ProductDetails: React.FC = () => {
             </div>
           </div>
         )}
+
+        <EnquiryModal
+          isOpen={isEnquiryModalOpen}
+          onClose={() => setIsEnquiryModalOpen(false)}
+          productName={product?.name}
+          productCategory={product?.category}
+        />
 
       </div>
     </div>

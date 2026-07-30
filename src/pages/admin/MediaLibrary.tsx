@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../../lib/supabase';
 import { SEO } from '../../components/SEO';
-import { Trash2, FolderClosed, Image as ImageIcon, Upload, Search, Copy, Check, HardDrive, RefreshCw, Crop, RotateCw, FlipHorizontal } from 'lucide-react';
+import { Trash2, FolderClosed, Image as ImageIcon, Upload, Search, Copy, Check, HardDrive, RefreshCw, Crop, RotateCw, FlipHorizontal, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface MediaAsset {
   id: string;
@@ -28,6 +28,10 @@ export const MediaLibrary: React.FC = () => {
   const [mediaList, setMediaList] = useState<MediaAsset[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFolder, setSelectedFolder] = useState<string>('All');
+  
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const ITEMS_PER_PAGE = 24;
   
   // Selection
   const [selectedAsset, setSelectedAsset] = useState<MediaAsset | null>(null);
@@ -82,6 +86,10 @@ export const MediaLibrary: React.FC = () => {
   useEffect(() => {
     fetchCatalog();
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedFolder]);
 
   // Sync details on asset select
   useEffect(() => {
@@ -344,7 +352,7 @@ export const MediaLibrary: React.FC = () => {
   const storageUsedBytes = mediaList.reduce((acc, x) => acc + (x.fileSize || 0), 0);
   const storageUsedMB = (storageUsedBytes / (1024 * 1024)).toFixed(2);
 
-  const filteredList = mediaList.filter((item) => {
+  const filteredList = mediaList.filter((item: MediaAsset) => {
     if (selectedFolder !== 'All' && item.folder !== selectedFolder) return false;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
@@ -356,6 +364,9 @@ export const MediaLibrary: React.FC = () => {
     }
     return true;
   });
+
+  const totalPages = Math.ceil(filteredList.length / ITEMS_PER_PAGE) || 1;
+  const paginatedList = filteredList.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   if (loading) {
     return (
@@ -453,37 +464,67 @@ export const MediaLibrary: React.FC = () => {
                 No media assets found matching filters.
               </div>
             ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                {filteredList.map((asset) => (
-                  <div key={asset.id} className="group rounded-xl border border-wood-200/40 overflow-hidden flex flex-col justify-between hover:border-wood-400 bg-white">
-                    <div className="aspect-square bg-wood-50 relative overflow-hidden flex items-center justify-center">
-                      <img src={asset.src} alt={asset.altText} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-wood-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                        <button onClick={() => copyUrl(asset.src, asset.id)} className="w-8 h-8 rounded-full bg-white text-wood-800 hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Copy URL">
-                          {copiedId === asset.id ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
-                        </button>
-                        <button onClick={() => { setEditingAsset(asset); setEditMode(true); setRotation(0); setFlipH(false); setCropLeft(0); setCropRight(0); setCropTop(0); setCropBottom(0); }} className="w-8 h-8 rounded-full bg-white text-wood-800 hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Crop & Edit">
-                          <Crop className="w-4 h-4" />
-                        </button>
-                        <label className="w-8 h-8 rounded-full bg-white text-wood-800 hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Replace File">
-                          <RefreshCw className="w-4 h-4" />
-                          <input type="file" onChange={(e) => { setReplacingAsset(asset); handleReplaceFile(e); }} className="hidden" />
-                        </label>
-                        <button onClick={() => handleDeleteAsset(asset)} className="w-8 h-8 rounded-full bg-red-500 text-white hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Delete File">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+              <>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 auto-rows-max">
+                  {paginatedList.map((asset: MediaAsset) => (
+                    <div key={asset.id} className="group rounded-xl border border-wood-200/40 overflow-hidden flex flex-col justify-between hover:border-wood-400 bg-white">
+                      <div className="aspect-square bg-wood-50 relative overflow-hidden flex items-center justify-center">
+                        <img src={asset.src} alt={asset.altText} loading="lazy" className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-wood-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                          <button onClick={() => copyUrl(asset.src, asset.id)} className="w-8 h-8 rounded-full bg-white text-wood-800 hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Copy URL">
+                            {copiedId === asset.id ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                          </button>
+                          <button onClick={() => { setEditingAsset(asset); setEditMode(true); setRotation(0); setFlipH(false); setCropLeft(0); setCropRight(0); setCropTop(0); setCropBottom(0); }} className="w-8 h-8 rounded-full bg-white text-wood-800 hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Crop & Edit">
+                            <Crop className="w-4 h-4" />
+                          </button>
+                          <label className="w-8 h-8 rounded-full bg-white text-wood-800 hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Replace File">
+                            <RefreshCw className="w-4 h-4" />
+                            <input type="file" onChange={(e) => { setReplacingAsset(asset); handleReplaceFile(e); }} className="hidden" />
+                          </label>
+                          <button onClick={() => handleDeleteAsset(asset)} className="w-8 h-8 rounded-full bg-red-500 text-white hover:scale-105 transition-transform flex items-center justify-center border-none cursor-pointer" title="Delete File">
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                      <div className="p-3 text-[10px] flex flex-col gap-1 border-t border-wood-100/50">
+                        <span className="font-serif font-bold text-wood-950 truncate">{asset.title}</span>
+                        <div className="text-wood-400 flex justify-between">
+                          <span>{asset.dimensions?.width}x{asset.dimensions?.height} px</span>
+                          <span>{Math.round(asset.fileSize / 1024)} KB</span>
+                        </div>
                       </div>
                     </div>
-                    <div className="p-3 text-[10px] flex flex-col gap-1 border-t border-wood-100/50">
-                      <span className="font-serif font-bold text-wood-950 truncate">{asset.title}</span>
-                      <div className="text-wood-400 flex justify-between">
-                        <span>{asset.dimensions?.width}x{asset.dimensions?.height} px</span>
-                        <span>{Math.round(asset.fileSize / 1024)} KB</span>
-                      </div>
+                  ))}
+                </div>
+
+                {/* Pagination Controls */}
+                <div className="flex items-center justify-between pt-3 border-t border-wood-100 text-[11px] font-semibold text-wood-600 shrink-0">
+                  <span>
+                    Showing {((currentPage - 1) * ITEMS_PER_PAGE) + 1} - {Math.min(currentPage * ITEMS_PER_PAGE, filteredList.length)} of {filteredList.length} assets
+                  </span>
+                  {totalPages > 1 && (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+                        disabled={currentPage === 1}
+                        className="p-1 rounded-lg border border-wood-200 bg-white hover:bg-wood-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                        title="Previous Page"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <span>Page {currentPage} of {totalPages}</span>
+                      <button
+                        onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+                        disabled={currentPage === totalPages}
+                        className="p-1 rounded-lg border border-wood-200 bg-white hover:bg-wood-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                        title="Next Page"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  )}
+                </div>
+              </>
             )}
           </div>
         </div>

@@ -57,24 +57,6 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products?category=Corner%20Sofa%20Sets</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Corner Sofa Sets Category Showcase</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products?category=Wooden%20Dining%20Tables</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Wooden Dining Tables Category Showcase</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products?category=Dining%20Chairs</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -174,23 +156,71 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/contemporary-teak-couch-premium-teak-wood</loc>
+    <loc>https://nikhilfurniture.com/products?category=Wooden%20Dining%20Tables</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1783870414792_library_ght9x.webp</image:loc>
+      <image:title>Wooden Dining Tables Category Showcase</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products?category=Corner%20Sofa%20Sets</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784805143043_library_yt445j.webp</image:loc>
+      <image:title>Corner Sofa Sets Category Showcase</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/terracotta-orange-wooden-basic-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Contemporary Teak Couch - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784806810824_library_ph690d.webp</image:loc>
+      <image:title>Terracotta Orange Wooden Basic Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Premium Teak Wood with a rich Glossy Honey finish.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/modern-platform-bed-premium-teak-wood</loc>
+    <loc>https://nikhilfurniture.com/products/wooden-solid-dining-chair-with-cusion-dark-grey</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Modern Platform Bed - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Premium Teak Wood with a rich Natural Matte finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784995049801_library_rf3y3x.webp</image:loc>
+      <image:title>Wooden Solid Dining Chair with Cusion  (Dark Grey) - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Dining Chair made from high-quality Teak/Mahogany</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/basic-sofa-3-piece-set-burgundy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784805724500_library_vupes.webp</image:loc>
+      <image:title>Basic Sofa 3 piece set - Burgundy - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/velvety-grey-wooden-corner-sofa</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784810267450_library_f0969p.webp</image:loc>
+      <image:title>Velvety Grey Wooden Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Premium Teak/Mahogany Wood</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/wooden-solid-dining-chair-with-cusion-dark-grey-dup-mfzw</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784995049801_library_rf3y3x.webp</image:loc>
+      <image:title>Wooden Solid Dining Chair with Cusion  (Dark Grey) (Copy) - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Dining Chair made from high-quality Teak/Mahogany</image:caption>
     </image:image>
   </url>
   <url>
@@ -204,112 +234,82 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/malabar-royal-sofa-mahogany</loc>
+    <loc>https://nikhilfurniture.com/products/dark-green-wooden-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Malabar Royal Sofa - Mahogany - Handcrafted Solid Wood Furniture</image:title>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784808198362_library_zu9ft3.webp</image:loc>
+      <image:title>Dark Green Wooden Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Mahogany with a rich Teak Gloss finish.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/ornate-main-door-frame-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/lshape-premium-sectional-mahogany</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Ornate Main Door Frame - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784811370341_library_gxlnh.webp</image:loc>
+      <image:title>Basic Wooden Dining Chair  - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted fully wood Chairs for your Dining Table</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/modern-solid-wood-dining-table-premium-teak-wood</loc>
+    <loc>https://nikhilfurniture.com/products/dark-taupe-classic-3-piece-wooden-sofa-set</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Modern Solid Wood Dining Table - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Premium Teak Wood with a rich Walnut Stain finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784809674354_library_4aqxd.webp</image:loc>
+      <image:title>Dark Taupe Classic 3 piece Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/royal-king-size-cot-mahogany</loc>
+    <loc>https://nikhilfurniture.com/products/rectangle-wooden-glass-top-teapoy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Royal King Size Cot - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Mahogany with a rich Glossy Honey finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784992010797_library_juowcs.webp</image:loc>
+      <image:title>Rectangle Wooden  Glass top Teapoy - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Teapoy made from high-quality Teak/Mahogany</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/heritage-carver-chair-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/curved-designer-wooden-glass-top-teapoy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Heritage Carver Chair - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Anjili with a rich Teak Gloss finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784992769133_library_gtd0u.webp</image:loc>
+      <image:title>Curved Designer Wooden Glass top Teapoy - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Teapoy made from high-quality Teak/Mahogany</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/traditional-kerala-settee-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/dark-mauve-wooden-basic-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Traditional Kerala Settee - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784447856189_library_efu73f.webp</image:loc>
+      <image:title>Dark mauve Wooden Basic Corner Sofa  - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Teak/Mahagany with Matte finish.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/minimalist-divider-shelf-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/wooden-outdoor-bench-with-armrests</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Minimalist Divider Shelf - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Anjili with a rich Walnut Stain finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784993737019_library_7mi4li.webp</image:loc>
+      <image:title>Wooden Outdoor Bench with Armrests - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Teak /Mahogany</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/royal-mahogany-bookshelf-walnut-wood</loc>
+    <loc>https://nikhilfurniture.com/products/wooden-sofa-311-set-beige</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Royal Mahogany Bookshelf - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Walnut Wood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/compact-wooden-wardrobe-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Compact Wooden Wardrobe - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Premium Teak Wood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/nilambur-6seater-table-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Nilambur 6-Seater Table - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Mahogany with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/wooden-sofa-set-orchid</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1783874014161_library_m04acs.webp</image:loc>
-      <image:title>Wooden Sofa Set -Orchid - Handcrafted Solid Wood Furniture</image:title>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784806438762_library_x0s6n.webp</image:loc>
+      <image:title>Wooden Sofa  3+1+1 set- beige - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted sofa sets made from high-quality Teak wood with a rich Matte finish.</image:caption>
     </image:image>
   </url>
@@ -324,613 +324,103 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/heritage-teak-sofa-set-rosewood</loc>
+    <loc>https://nikhilfurniture.com/products/designer-l-shaped-wooden-corner-sofa-beige</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Heritage Teak Sofa Set - Rosewood - Handcrafted Solid Wood Furniture</image:title>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784804751961_library_vapins.webp</image:loc>
+      <image:title>Designer L Shaped Wooden Corner Sofa- Beige - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Mahogany or Teak Wood</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/wooden-solid-dining-chair-with-cusion</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784804818016_library_ch6djhb.webp</image:loc>
+      <image:title>Wooden Solid Dining Chair with Cusion - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Jackwood with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/tan-brown-wooden-sofa-set</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784807721613_library_ndxfb.webp</image:loc>
+      <image:title>Tan Brown Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Rosewood with a rich Glossy Honey finish.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/classic-kerala-3seater-walnut-wood</loc>
+    <loc>https://nikhilfurniture.com/products/mint-green-basic-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Classic Kerala 3-Seater - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784808807177_library_d0a79b.webp</image:loc>
+      <image:title>Mint Green Basic Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Walnut Wood with a rich Walnut Stain finish.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/traditional-carved-sofa-set-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/white-basic-wooden-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Traditional Carved Sofa Set - Anjili - Handcrafted Solid Wood Furniture</image:title>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784809095971_library_p47hti.webp</image:loc>
+      <image:title>White Basic Wooden Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Anjili with a rich Satin Wax Finish finish.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/imperial-wood-sofa-set-jackwood</loc>
+    <loc>https://nikhilfurniture.com/products/beige-removable-cushion-wooden-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Imperial Wood Sofa Set - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784810806758_library_i7jsjo.webp</image:loc>
+      <image:title>Beige Removable Cushion Wooden Sofa  - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted Beige Removable Cushion  3 piece Wooden Sofa Set</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/lshape-premium-sectional-mahogany</loc>
+    <loc>https://nikhilfurniture.com/products/dusky-pink-3-seater-wooden-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>L-Shape Premium Sectional - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Mahogany with a rich Walnut Stain finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784813114649_library_z92ylg.webp</image:loc>
+      <image:title>Dusky Pink 3 seater Wooden Sofa - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted Dusky Pink 3 seater Wooden Sofa with removal Cushions</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/royal-corner-sofa-rosewood</loc>
+    <loc>https://nikhilfurniture.com/products/octagonal-glass-top-wooden-teapoy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Royal Corner Sofa - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Rosewood with a rich Teak Gloss finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784813697523_library_d4e80p.webp</image:loc>
+      <image:title>Octagonal Glass Top Wooden Teapoy - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted Octagonal Glass Top Wooden Teapoy made with Mahogany/ Teakwood</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/grand-malabar-corner-suite-walnut-wood</loc>
+    <loc>https://nikhilfurniture.com/products/basic-wooden-bench</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Grand Malabar Corner Suite - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Walnut Wood with a rich Satin Wax Finish finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784994414457_library_00ke7h.webp</image:loc>
+      <image:title>Basic Wooden Bench - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Premium Teak /Mahogany</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/nilambur-sectional-sofa-anjili</loc>
+    <loc>https://nikhilfurniture.com/products/wooden-oval-glass-top-teapoy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/sofa.jpg</image:loc>
-      <image:title>Nilambur Sectional Sofa - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Anjili with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/signature-dining-collection-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Signature Dining Collection - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Rosewood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/imperial-lcouch-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784442767598_library_irkyus.webp</image:loc>
-      <image:title>Imperial L-Couch - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted corner sofa sets made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/rustic-bench-dining-set-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Rustic Bench Dining Set - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Anjili with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/mahogany-oval-dining-table-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Mahogany Oval Dining Table - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Walnut Wood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/heritage-round-dinner-table-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Heritage Round Dinner Table - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden dining tables made from high-quality Jackwood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/elegance-dining-chair-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Elegance Dining Chair - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Rosewood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/cushioned-rosewood-chair-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Cushioned Rosewood Chair - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Mahogany with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-slatted-chair-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Classic Slatted Chair - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Walnut Wood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/elegance-wooden-cot-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Elegance Wooden Cot - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Rosewood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/crossback-teak-chair-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Crossback Teak Chair - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Jackwood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/modern-upholstered-chair-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Modern Upholstered Chair - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted dining chairs made from high-quality Premium Teak Wood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-poster-cot-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Classic Poster Cot - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Anjili with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/traditional-kerala-cot-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Traditional Kerala Cot - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Jackwood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/malabar-queen-bed-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/bed.jpg</image:loc>
-      <image:title>Malabar Queen Bed - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden cots made from high-quality Walnut Wood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/3door-teak-wardrobe-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>3-Door Teak Wardrobe - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Walnut Wood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/heritage-almirah-with-mirror-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Heritage Almirah with Mirror - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Mahogany with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/premium-kerala-wardrobe-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Premium Kerala Wardrobe - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Rosewood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-bedroom-closet-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Classic Bedroom Closet - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/walnut-teapoy-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Walnut Teapoy - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted teapoys made from high-quality Rosewood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/royal-4door-wardrobe-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Royal 4-Door Wardrobe - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wardrobes / almirahs made from high-quality Anjili with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-oval-coffee-table-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Classic Oval Coffee Table - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted teapoys made from high-quality Mahogany with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/carved-rosewood-teapoy-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Carved Rosewood Teapoy - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted teapoys made from high-quality Walnut Wood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/minimalist-coffee-table-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Minimalist Coffee Table - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted teapoys made from high-quality Anjili with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/hexagonal-wood-teapoy-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Hexagonal Wood Teapoy - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted teapoys made from high-quality Jackwood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/teak-end-table-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Teak End Table - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted teapoys made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-wooden-bench-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Classic Wooden Bench - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Rosewood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/heritage-verandah-bench-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Heritage Verandah Bench - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Mahogany with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/carved-dining-bench-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Carved Dining Bench - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Walnut Wood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/outdoor-teak-bench-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Outdoor Teak Bench - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Jackwood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/minimalist-corridor-bench-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/dining.jpg</image:loc>
-      <image:title>Minimalist Corridor Bench - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Premium Teak Wood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/console-tv-unit-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Console TV Unit - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted tv units made from high-quality Rosewood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/teak-floating-media-center-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Teak Floating Media Center - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted tv units made from high-quality Mahogany with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/heritage-entertainment-cabinet-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Heritage Entertainment Cabinet - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted tv units made from high-quality Walnut Wood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/modern-lowline-stand-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Modern Low-Line Stand - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted tv units made from high-quality Anjili with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-tv-console-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Classic TV Console - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted tv units made from high-quality Jackwood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/vintage-library-shelf-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Vintage Library Shelf - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Rosewood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-open-bookcase-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Classic Open Bookcase - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Mahogany with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/corner-tv-cabinet-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Corner TV Cabinet - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted tv units made from high-quality Premium Teak Wood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/slanted-designer-shelf-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Slanted Designer Shelf - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Jackwood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/compact-study-bookcase-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Compact Study Bookcase - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted bookshelves made from high-quality Premium Teak Wood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/executive-study-desk-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Executive Study Desk - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted study tables made from high-quality Rosewood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/teak-work-desk-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Teak Work Desk - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted study tables made from high-quality Mahogany with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/vintage-writing-bureau-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Vintage Writing Bureau - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted study tables made from high-quality Walnut Wood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/student-study-table-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Student Study Table - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted study tables made from high-quality Anjili with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/compact-computer-table-jackwood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Compact Computer Table - Jackwood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted study tables made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/classic-drawer-desk-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Classic Drawer Desk - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted study tables made from high-quality Premium Teak Wood with a rich Glossy Honey finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/director-executive-desk-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Director Executive Desk - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Rosewood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/solid-teak-office-credenza-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Solid Teak Office Credenza - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Mahogany with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/conference-board-table-walnut-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Conference Board Table - Walnut Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Walnut Wood with a rich Satin Wax Finish finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/ergonomic-office-chair-anjili</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Ergonomic Office Chair - Anjili - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Anjili with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/receptionist-counter-desk-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Receptionist Counter Desk - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/custom-handcarved-mandir-rosewood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Custom Handcarved Mandir - Rosewood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Rosewood with a rich Walnut Stain finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/traditional-wooden-swing-mahogany</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Traditional Wooden Swing - Mahogany - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Mahogany with a rich Satin Wax Finish finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784990962103_library_fgarx.webp</image:loc>
+      <image:title>Wooden Oval Glass top Teapoy - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Teapoy made from high-quality Teak/Mahogany</image:caption>
     </image:image>
   </url>
   <url>
@@ -944,23 +434,13 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/corner-sofa-set</loc>
+    <loc>https://nikhilfurniture.com/products/wooden-modern-corner-sofa-rich-teal</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784446104607_library_b0dupe.webp</image:loc>
-      <image:title>Corner sofa set - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Jackwood with a rich Teak Gloss finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/custom-wardrobe-extension-premium-teak-wood</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Custom Wardrobe Extension - Premium Teak Wood - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Premium Teak Wood with a rich Walnut Stain finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784805143043_library_yt445j.webp</image:loc>
+      <image:title>Wooden Modern Corner Sofa - Rich Teal - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Teak/Mahagany with Matte finish.</image:caption>
     </image:image>
   </url>
 </urlset>

@@ -9,6 +9,7 @@ import { supabase } from '../lib/supabase';
 const contactFormSchema = zod.object({
   name: zod.string().min(2, 'Name must be at least 2 characters'),
   phone: zod.string().min(10, 'Please enter a valid phone number'),
+  location: zod.string().min(2, 'Location / City is required'),
   requirement: zod.string().min(1, 'Please select a requirement'),
   message: zod.string().min(5, 'Message must be at least 5 characters')
 });
@@ -49,6 +50,7 @@ export const Contact: React.FC = () => {
     defaultValues: {
       name: '',
       phone: '',
+      location: '',
       requirement: 'Custom Sofa Set',
       message: ''
     }
@@ -89,7 +91,7 @@ export const Contact: React.FC = () => {
   const info = data || defaultGeneralConfig;
 
   const onSubmit = (formData: ContactFormValues) => {
-    const text = `Hello ${info.companyName},\n\nMy name is ${formData.name}.\nContact Phone: ${formData.phone}\nRequirement Type: ${formData.requirement}\n\nMessage:\n${formData.message}\n\nPlease get back to me with availability and pricing.`;
+    const text = `Hello ${info.companyName},\n\nMy name is ${formData.name}.\nContact Phone: ${formData.phone}\nLocation: ${formData.location}\nRequirement Type: ${formData.requirement}\n\nMessage:\n${formData.message}\n\nPlease get back to me with availability and pricing.`;
     const url = `https://wa.me/91${info.whatsAppNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
@@ -204,6 +206,17 @@ export const Contact: React.FC = () => {
                   className="w-full bg-wood-50/50 border border-wood-200 rounded-xl py-2.5 px-4 text-sm font-sans focus:outline-none focus:border-wood-500 font-semibold"
                 />
                 {errors.phone && <span className="text-[10px] text-red-500 font-semibold">{errors.phone.message}</span>}
+              </div>
+
+              <div className="flex flex-col gap-1.5 font-sans font-semibold">
+                <label className="text-xs font-bold uppercase tracking-wider text-wood-500">Location / Delivery City</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Ernakulam, Thrissur, Palakkad..."
+                  {...register('location')}
+                  className="w-full bg-wood-50/50 border border-wood-200 rounded-xl py-2.5 px-4 text-sm font-sans focus:outline-none focus:border-wood-500 font-semibold"
+                />
+                {errors.location && <span className="text-[10px] text-red-500 font-semibold">{errors.location.message}</span>}
               </div>
 
               <div className="flex flex-col gap-1.5 font-sans font-semibold">

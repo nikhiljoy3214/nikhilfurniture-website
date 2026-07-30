@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../../lib/supabase';
-import { Search, FolderClosed, Image as ImageIcon, Upload, X, RotateCw, FlipHorizontal, Check, RefreshCw } from 'lucide-react';
+import { Search, FolderClosed, Image as ImageIcon, Upload, X, RotateCw, FlipHorizontal, Check, RefreshCw, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface MediaAsset {
   id: string;
@@ -36,6 +36,10 @@ export const MediaLibraryPicker: React.FC<MediaLibraryPickerProps> = ({ isOpen, 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFolder, setSelectedFolder] = useState<string>('All');
   const [selectedAsset, setSelectedAsset] = useState<MediaAsset | null>(null);
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const ITEMS_PER_PAGE = 24;
 
   // Upload States
   const [uploadFile, setUploadFile] = useState<File | null>(null);
@@ -91,8 +95,13 @@ export const MediaLibraryPicker: React.FC<MediaLibraryPickerProps> = ({ isOpen, 
       setActiveTab('browse');
       setSelectedAsset(null);
       setUploadFile(null);
+      setCurrentPage(1);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedFolder]);
 
   // Load selected file into editor
   useEffect(() => {
@@ -238,7 +247,7 @@ export const MediaLibraryPicker: React.FC<MediaLibraryPickerProps> = ({ isOpen, 
     }
   };
 
-  const filteredList = mediaList.filter((item) => {
+  const filteredList = mediaList.filter((item: MediaAsset) => {
     if (selectedFolder !== 'All' && item.folder !== selectedFolder) return false;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
@@ -250,6 +259,9 @@ export const MediaLibraryPicker: React.FC<MediaLibraryPickerProps> = ({ isOpen, 
     }
     return true;
   });
+
+  const totalPages = Math.ceil(filteredList.length / ITEMS_PER_PAGE) || 1;
+  const paginatedList = filteredList.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   if (!isOpen) return null;
 
@@ -321,18 +333,52 @@ export const MediaLibraryPicker: React.FC<MediaLibraryPickerProps> = ({ isOpen, 
                     <span>No matching assets inside the Media Library.</span>
                   </div>
                 ) : (
-                  <div className="flex-grow overflow-y-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 pr-2">
-                    {filteredList.map((asset) => {
-                      const isSelected = selectedAsset?.id === asset.id;
-                      return (
-                        <div key={asset.id} onClick={() => setSelectedAsset(asset)} className={`rounded-xl border overflow-hidden aspect-square relative bg-wood-50 cursor-pointer flex items-center justify-center transition-all ${
-                          isSelected ? 'border-gold-500 bg-gold-500/5 ring-2 ring-gold-500 scale-[0.98]' : 'border-wood-250/30 hover:border-wood-400'
-                        }`}>
-                          <img src={asset.src} alt={asset.altText} className="w-full h-full object-cover" />
+                  <>
+                    <div className="flex-grow overflow-y-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 pr-2 content-start auto-rows-max">
+                      {paginatedList.map((asset: MediaAsset) => {
+                        const isSelected = selectedAsset?.id === asset.id;
+                        return (
+                          <div
+                            key={asset.id}
+                            onClick={() => setSelectedAsset(asset)}
+                            className={`w-full aspect-square rounded-xl border overflow-hidden relative bg-wood-50 cursor-pointer transition-all ${
+                              isSelected ? 'border-gold-500 bg-gold-500/5 ring-2 ring-gold-500 scale-[0.98]' : 'border-wood-250/30 hover:border-wood-400'
+                            }`}
+                          >
+                            <img src={asset.src} alt={asset.altText} loading="lazy" className="w-full h-full object-cover" />
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Pagination Controls */}
+                    <div className="flex items-center justify-between pt-3 border-t border-wood-100 text-[11px] font-semibold text-wood-600 shrink-0">
+                      <span>
+                        Showing {((currentPage - 1) * ITEMS_PER_PAGE) + 1} - {Math.min(currentPage * ITEMS_PER_PAGE, filteredList.length)} of {filteredList.length} assets
+                      </span>
+                      {totalPages > 1 && (
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+                            disabled={currentPage === 1}
+                            className="p-1 rounded-lg border border-wood-200 bg-white hover:bg-wood-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                            title="Previous Page"
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                          </button>
+                          <span>Page {currentPage} of {totalPages}</span>
+                          <button
+                            onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+                            disabled={currentPage === totalPages}
+                            className="p-1 rounded-lg border border-wood-200 bg-white hover:bg-wood-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                            title="Next Page"
+                          >
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
                         </div>
-                      );
-                    })}
-                  </div>
+                      )}
+                    </div>
+                  </>
                 )}
               </div>
 
