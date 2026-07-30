@@ -184,16 +184,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/wooden-solid-dining-chair-with-cusion-dark-grey</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784995049801_library_rf3y3x.webp</image:loc>
-      <image:title>Wooden Solid Dining Chair with Cusion  (Dark Grey) - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customizable Dining Chair made from high-quality Teak/Mahogany</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/basic-sofa-3-piece-set-burgundy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -201,6 +191,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784805724500_library_vupes.webp</image:loc>
       <image:title>Basic Sofa 3 piece set - Burgundy - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted office furniture made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/wooden-solid-dining-chair-with-cusion-dark-grey</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784995049801_library_rf3y3x.webp</image:loc>
+      <image:title>Wooden Solid Dining Chair with Cusion  (Dark Grey) - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Dining Chair made from high-quality Teak/Mahogany</image:caption>
     </image:image>
   </url>
   <url>

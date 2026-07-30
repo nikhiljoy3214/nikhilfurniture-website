@@ -137,13 +137,75 @@ export const Products: React.FC = () => {
     }
   };
 
-  const woodTypes = ['Premium Teak Wood', 'Rosewood', 'Mahogany', 'Walnut Wood', 'Anjili', 'Jackwood'];
-  const categories = [
+  // Dynamic Wood Types and Categories state
+  const [woodTypes, setWoodTypes] = useState<string[]>([
+    'Premium Teak Wood', 'Rosewood', 'Mahogany', 'Walnut Wood', 'Anjili', 'Jackwood'
+  ]);
+  const [categories, setCategories] = useState<string[]>([
     'Wooden Sofa Sets', 'Corner Sofa Sets', 'Wooden Dining Tables',
     'Dining Chairs', 'Wooden Cots', 'Wardrobes / Almirahs',
     'Teapoys', 'Wooden Benches', 'TV Units', 'Bookshelves',
     'Study Tables', 'Office Furniture', 'Customized Furniture'
-  ];
+  ]);
+
+  // Dynamically extract distinct Timber Species (from wood_type column & matrix_attributes JSON) and Categories
+  useEffect(() => {
+    const fetchDynamicFilters = async () => {
+      try {
+        const { data: prods } = await supabase
+          .from('products')
+          .select('wood_type, category, specifications');
+
+        if (prods && prods.length > 0) {
+          const woodSet = new Set<string>();
+          const catSet = new Set<string>();
+
+          prods.forEach((p: any) => {
+            // 1. Collect Categories
+            if (p.category && p.category.trim()) {
+              catSet.add(p.category.trim());
+            }
+
+            // 2. Collect from wood_type column (handles single or multi-wood strings like "Mahagony, Teak")
+            if (p.wood_type && p.wood_type.trim()) {
+              const parts = p.wood_type.split(/[,/|]|\band\b/i);
+              parts.forEach((part: string) => {
+                const cleaned = part.trim();
+                if (cleaned) woodSet.add(cleaned);
+              });
+            }
+
+            // 3. Collect from matrix_attributes inside specifications JSON (from Wood & Pricing tab)
+            if (p.specifications && Array.isArray(p.specifications.matrix_attributes)) {
+              p.specifications.matrix_attributes.forEach((attr: any) => {
+                if (attr && attr.name && /wood/i.test(attr.name) && Array.isArray(attr.values)) {
+                  attr.values.forEach((val: string) => {
+                    if (val && val.trim()) {
+                      woodSet.add(val.trim());
+                    }
+                  });
+                }
+              });
+            }
+          });
+
+          if (woodSet.size > 0) {
+            const sortedWoods = Array.from(woodSet).sort((a, b) => a.localeCompare(b));
+            setWoodTypes(sortedWoods);
+          }
+
+          if (catSet.size > 0) {
+            const sortedCats = Array.from(catSet).sort((a, b) => a.localeCompare(b));
+            setCategories(sortedCats);
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching dynamic filters:', err);
+      }
+    };
+
+    fetchDynamicFilters();
+  }, []);
 
   // Fetch products based on parameters
   useEffect(() => {
@@ -169,7 +231,7 @@ export const Products: React.FC = () => {
           query = query.eq('category', currentCategory);
         }
         if (currentWood) {
-          query = query.eq('wood_type', currentWood);
+          query = query.ilike('wood_type', `%${currentWood}%`);
         }
         if (search) {
           query = query.ilike('name', `%${search}%`);
