@@ -26,12 +26,8 @@ export interface TimberSpecies {
 }
 
 const defaultTimberSpecies: TimberSpecies[] = [
-  { id: 'w1', name: 'Premium Teak Wood', origin: 'Nilambur, Kerala', density: 'High Oil & Tight Grain', description: 'Heirloom quality timber naturally rich in essential teak oils, offering supreme termite immunity and golden luster.', sort_order: 1, is_visible: true },
-  { id: 'w2', name: 'Rosewood', origin: 'Malabar, Kerala', density: 'Ultra High Density', description: 'Deep purple-brown grain timber renowned for ornamental hand carvings and heirloom durability.', sort_order: 2, is_visible: true },
-  { id: 'w3', name: 'Mahogany', origin: 'Seasoned Plantation', density: 'Medium-High Density', description: 'Classic reddish-brown hardwood with smooth grain texture, ideal for elegant dining and bedroom suites.', sort_order: 3, is_visible: true },
-  { id: 'w4', name: 'Walnut Wood', origin: 'Imported Grade', density: 'Dense & Stable', description: 'Luxurious dark cocoa tones with straight, dark-veined grain patterns.', sort_order: 4, is_visible: true },
-  { id: 'w5', name: 'Anjili', origin: 'Central Travancore', density: 'Water-Resistant Hardwood', description: 'Traditional Kerala jungle hardwood exceptionally resistant to water damage.', sort_order: 5, is_visible: true },
-  { id: 'w6', name: 'Jackwood', origin: 'Local Homesteads', density: 'Golden Hardwood', description: 'Vibrant golden yellow timber prized in traditional Kerala architecture and sacred furniture.', sort_order: 6, is_visible: true }
+  { id: 'w1', name: 'Teak Wood', origin: 'Nilambur, Kerala', density: 'High Oil & Tight Grain', description: 'Heirloom quality timber naturally rich in essential teak oils, offering supreme termite immunity and golden luster.', sort_order: 1, is_visible: true },
+  { id: 'w2', name: 'Mahogany', origin: 'Seasoned Plantation', density: 'Medium-High Density', description: 'Classic reddish-brown hardwood with smooth grain texture, ideal for elegant dining and bedroom suites.', sort_order: 2, is_visible: true }
 ];
 
 export const Categories: React.FC = () => {
@@ -446,13 +442,57 @@ export const Categories: React.FC = () => {
     const matchedProds = getProductsForWood(name);
     let warning = `Are you sure you want to delete timber species "${name}"?`;
     if (matchedProds.length > 0) {
-      warning = `⚠️ INTEGRITY WARNING!\n\nThere are ${matchedProds.length} products currently listed under "${name}". Deleting this species will remove it from the admin catalog.\n\nAre you sure you want to proceed?`;
+      warning = `⚠️ INTEGRITY WARNING!\n\nThere are ${matchedProds.length} products currently listed under "${name}". Deleting this species will remove it from the admin catalog and update associated products.\n\nAre you sure you want to proceed?`;
     }
 
     if (!window.confirm(warning)) return;
 
-    const updated = timberList.filter(w => w.id !== id);
-    await saveWoodCatalogSettings(updated);
+    try {
+      setLoading(true);
+      // 1. Remove from timberList & persist to site_settings
+      const updated = timberList.filter(w => w.id !== id);
+      await supabase
+        .from('site_settings')
+        .upsert([{ key: 'wood_types_catalog', value: { items: updated } }]);
+      setTimberList(updated);
+
+      // 2. Clean up database products that contain this deleted wood species
+      if (matchedProds.length > 0) {
+        for (const p of matchedProds) {
+          let newWoodType = (p.wood_type || '')
+            .split(/[,/|]|\band\b/i)
+            .map((w: string) => w.trim())
+            .filter((w: string) => w && w.toLowerCase() !== name.toLowerCase())
+            .join(', ');
+          if (!newWoodType) newWoodType = 'Teak Wood, Mahogany';
+
+          let newSpecs: any = p.specifications ? { ...p.specifications } : {};
+          if (newSpecs && Array.isArray(newSpecs.matrix_attributes)) {
+            newSpecs.matrix_attributes = newSpecs.matrix_attributes.map((attr: any) => {
+              if (attr && attr.name && /wood/i.test(attr.name) && Array.isArray(attr.values)) {
+                const filteredVals = attr.values.filter((v: string) => v && v.toLowerCase() !== name.toLowerCase());
+                return {
+                  ...attr,
+                  values: filteredVals.length > 0 ? filteredVals : ['Mahogany', 'Teak Wood']
+                };
+              }
+              return attr;
+            });
+          }
+
+          await supabase
+            .from('products')
+            .update({ wood_type: newWoodType, specifications: newSpecs })
+            .eq('id', p.id);
+        }
+      }
+
+      await fetchAllData();
+    } catch (err: any) {
+      alert(`Delete failed: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDuplicateWood = async (w: TimberSpecies) => {

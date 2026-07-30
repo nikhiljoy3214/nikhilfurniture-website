@@ -139,7 +139,7 @@ export const Products: React.FC = () => {
 
   // Dynamic Wood Types and Categories state
   const [woodTypes, setWoodTypes] = useState<string[]>([
-    'Premium Teak Wood', 'Rosewood', 'Mahogany', 'Walnut Wood', 'Anjili', 'Jackwood'
+    'Teak Wood', 'Mahogany'
   ]);
   const [categories, setCategories] = useState<string[]>([
     'Wooden Sofa Sets', 'Corner Sofa Sets', 'Wooden Dining Tables',

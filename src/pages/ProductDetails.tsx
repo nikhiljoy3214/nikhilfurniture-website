@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { MessageCircle, Phone, ArrowLeft, ArrowRight, Check, Info } from 'lucide-react';
+import { MessageCircle, Phone, ArrowLeft, ArrowRight, Check, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Product } from '../types';
 import { Image } from '../components/Image';
@@ -312,40 +312,105 @@ export const ProductDetails: React.FC = () => {
         {/* Product Details Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
           
-          {/* Left: Gallery Picker */}
-          <div className="lg:col-span-7 flex flex-col gap-4">
-            
-            {/* Primary Main Image Box */}
-            <div className="rounded-3xl overflow-hidden shadow-sm border border-wood-200/40 relative bg-white aspect-[4/3] max-h-[500px]">
-              <Image
-                src={selectedImage}
-                alt={product.alt_text || product.name}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-4 right-4 z-10">
-                <WishlistButton product={product} className="shadow-md" showText={false} />
-              </div>
-            </div>
+          {/* Left: Gallery Picker with Smooth Sliding Track & Navigation Arrows */}
+          {(() => {
+            const galleryList = product.gallery_images && product.gallery_images.length > 0 
+              ? product.gallery_images 
+              : [product.featured_image];
 
-            {/* Thumbnail Selectors */}
-            {product.gallery_images && product.gallery_images.length > 1 && (
-              <div className="flex items-center gap-4 overflow-x-auto py-2">
-                {product.gallery_images.map((img, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedImage(img)}
-                    className={`w-24 h-18 rounded-xl overflow-hidden border-2 shrink-0 transition-all ${
-                      selectedImage === img
-                        ? 'border-gold-500 scale-102 shadow-sm'
-                        : 'border-transparent opacity-70 hover:opacity-100'
-                    }`}
+            const currentIdx = galleryList.indexOf(selectedImage) >= 0 
+              ? galleryList.indexOf(selectedImage) 
+              : 0;
+
+            const handleNext = () => {
+              const nextIdx = (currentIdx + 1) % galleryList.length;
+              setSelectedImage(galleryList[nextIdx]);
+            };
+
+            const handlePrev = () => {
+              const prevIdx = (currentIdx - 1 + galleryList.length) % galleryList.length;
+              setSelectedImage(galleryList[prevIdx]);
+            };
+
+            return (
+              <div className="lg:col-span-7 flex flex-col gap-4">
+                
+                {/* Primary Main Image Showcase Box with Horizontal Sliding Track */}
+                <div className="rounded-3xl overflow-hidden shadow-sm border border-wood-200/40 relative bg-white aspect-[4/3] max-h-[500px] group select-none">
+                  
+                  {/* Sliding Image Track */}
+                  <div
+                    className="w-full h-full flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                    style={{ transform: `translateX(-${currentIdx * 100}%)` }}
                   >
-                    <img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover" />
-                  </button>
-                ))}
+                    {galleryList.map((img, idx) => (
+                      <div key={idx} className="w-full h-full shrink-0 relative">
+                        <Image
+                          src={img}
+                          alt={`${product.alt_text || product.name} - View ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Top Right Wishlist Button */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <WishlistButton product={product} className="shadow-md" showText={false} />
+                  </div>
+
+                  {/* Navigation Controls Overlay */}
+                  {galleryList.length > 1 && (
+                    <>
+                      {/* Left (Previous Image) Arrow */}
+                      <button
+                        onClick={handlePrev}
+                        aria-label="Previous image"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-wood-900 border border-wood-200/60 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                        title="Previous Image"
+                      >
+                        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+                      </button>
+
+                      {/* Right (Next Image) Arrow */}
+                      <button
+                        onClick={handleNext}
+                        aria-label="Next image"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-wood-900 border border-wood-200/60 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                        title="Next Image"
+                      >
+                        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+                      </button>
+
+                      {/* Image Counter Badge */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 bg-wood-950/75 text-white text-[11px] font-bold py-1 px-3.5 rounded-full backdrop-blur-md shadow-md tracking-wider">
+                        {currentIdx + 1} / {galleryList.length}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Thumbnail Selectors */}
+                {galleryList.length > 1 && (
+                  <div className="flex items-center gap-4 overflow-x-auto py-2">
+                    {galleryList.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedImage(img)}
+                        className={`w-24 h-18 rounded-xl overflow-hidden border-2 shrink-0 transition-all cursor-pointer ${
+                          selectedImage === img
+                            ? 'border-gold-500 scale-102 shadow-sm'
+                            : 'border-transparent opacity-70 hover:opacity-100'
+                        }`}
+                      >
+                        <img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            );
+          })()}
 
           {/* Right: Product Metadata & Actions */}
           <div className="lg:col-span-5 flex flex-col gap-6">

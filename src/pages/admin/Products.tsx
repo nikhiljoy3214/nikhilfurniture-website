@@ -310,13 +310,21 @@ export const Products: React.FC = () => {
     const newSlug = `${p.slug}-dup-${randomSuffix}`;
     const newName = `${p.name} (Copy)`;
 
+    let dupWoodType = p.wood_type;
+    if (p.specifications && Array.isArray(p.specifications.matrix_attributes)) {
+      const woodAttr = p.specifications.matrix_attributes.find((a: any) => a && /wood/i.test(a.name));
+      if (woodAttr && Array.isArray(woodAttr.values) && woodAttr.values.length > 0) {
+        dupWoodType = woodAttr.values.join(', ');
+      }
+    }
+
     const duplicatePayload = {
       name: newName,
       slug: newSlug,
       short_description: p.short_description,
       detailed_description: p.detailed_description,
       category: p.category,
-      wood_type: p.wood_type,
+      wood_type: dupWoodType,
       finish: p.finish,
       dimensions: p.dimensions,
       specifications: p.specifications,

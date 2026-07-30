@@ -138,8 +138,23 @@ export const ProductEditor: React.FC<ProductEditorProps> = ({
   const addMatrixAttribute = () => {
     handleAttributesChange([
       ...matrixAttributes,
-      { name: 'New Attribute', values: ['Option 1', 'Option 2'], rawInput: 'Option 1, Option 2' }
+      { name: 'Wood', values: ['Mahogany', 'Teak Wood'], rawInput: 'Mahogany, Teak Wood' }
     ]);
+  };
+
+  const applyPresetAttribute = (presetName: string, presetValuesStr: string) => {
+    const values = presetValuesStr.split(',').map(v => v.trim()).filter(Boolean);
+    const existingIndex = matrixAttributes.findIndex(a => a.name.toLowerCase() === presetName.toLowerCase());
+    
+    if (existingIndex >= 0) {
+      const updated = matrixAttributes.map((a, i) => i === existingIndex ? { ...a, values, rawInput: presetValuesStr } : a);
+      handleAttributesChange(updated);
+    } else {
+      handleAttributesChange([
+        ...matrixAttributes,
+        { name: presetName, values, rawInput: presetValuesStr }
+      ]);
+    }
   };
 
   const removeMatrixAttribute = (index: number) => {
@@ -288,9 +303,10 @@ export const ProductEditor: React.FC<ProductEditorProps> = ({
       setTagsInput('Premium Wood, Handcrafted, Kerala Furniture');
       setFeaturedImage('');
       setGalleryImages([]);
-      setIsMatrixPricing(false);
-      setMatrixAttributes([]);
-      setMatrixCombinations([]);
+      setIsMatrixPricing(true);
+      const defaultWoodAttrs = [{ name: 'Wood', values: ['Mahogany', 'Teak Wood'], rawInput: 'Mahogany, Teak Wood' }];
+      setMatrixAttributes(defaultWoodAttrs);
+      handleAttributesChange(defaultWoodAttrs);
       
       setDimensions('');
       setMaterial('Genuine Hardwood');
@@ -469,13 +485,21 @@ export const ProductEditor: React.FC<ProductEditorProps> = ({
       }
     });
 
+    let computedWoodType = woodType;
+    if (isMatrixPricing && matrixAttributes && matrixAttributes.length > 0) {
+      const woodAttr = matrixAttributes.find(a => a.name && /wood/i.test(a.name));
+      if (woodAttr && Array.isArray(woodAttr.values) && woodAttr.values.length > 0) {
+        computedWoodType = woodAttr.values.join(', ');
+      }
+    }
+
     const payload: Partial<Product> = {
       name,
       slug,
       short_description: shortDesc,
       detailed_description: detailedDesc,
       category,
-      wood_type: woodType,
+      wood_type: computedWoodType,
       finish,
       dimensions,
       specifications,
@@ -1113,6 +1137,29 @@ export const ProductEditor: React.FC<ProductEditorProps> = ({
                       >
                         + Add Attribute
                       </button>
+                    </div>
+
+                    {/* Quick Attribute Presets Helper Bar */}
+                    <div className="flex flex-wrap items-center gap-2 p-2.5 bg-wood-50/80 rounded-xl border border-wood-200/50">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-wood-600 flex items-center gap-1">
+                        ⚡ Quick Add Presets:
+                      </span>
+                      {[
+                        { name: 'Wood', values: 'Mahogany, Teak Wood', label: '🪵 Wood (Mahogany, Teak Wood)' },
+                        { name: 'Size', values: 'Single, Double, Queen, King', label: '📏 Cot Size (Single, Double, Queen, King)' },
+                        { name: 'Seating', values: '3-Seater, 3+1+1 Set, 5-Seater', label: '🛋️ Sofa Seating (3-Seater, 3+1+1)' },
+                        { name: 'Finish', values: 'Natural Matte, Honey Gloss, Walnut Polish', label: '🎨 Finish (Matte, Gloss, Polish)' },
+                      ].map((preset) => (
+                        <button
+                          key={preset.name}
+                          type="button"
+                          onClick={() => applyPresetAttribute(preset.name, preset.values)}
+                          className="bg-white hover:bg-wood-800 hover:text-white text-wood-900 text-[10px] font-bold py-1 px-2.5 rounded-lg border border-wood-300 shadow-2xs transition-all cursor-pointer"
+                          title={`Quick add ${preset.name} attribute with preset values`}
+                        >
+                          + {preset.label}
+                        </button>
+                      ))}
                     </div>
 
                     {matrixAttributes.length > 0 ? (
