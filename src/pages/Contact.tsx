@@ -125,7 +125,7 @@ export const Contact: React.FC = () => {
           {/* Left: Contact Info */}
           <div className="lg:col-span-5 flex flex-col gap-8">
             <div className="bg-white p-8 rounded-3xl border border-wood-200/40 shadow-sm flex flex-col gap-6">
-              <h3 className="font-serif text-xl font-bold text-wood-950">Showroom Details</h3>
+              <h2 className="font-serif text-xl font-bold text-wood-950">Showroom Details</h2>
               
               <div className="flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-wood-650 shrink-0 mt-0.5" />
@@ -182,7 +182,7 @@ export const Contact: React.FC = () => {
 
           {/* Right: Contact Form */}
           <div className="lg:col-span-7 bg-white p-8 md:p-12 rounded-3xl border border-wood-200/40 shadow-sm">
-            <h3 className="font-serif text-2xl font-bold text-wood-950 mb-8">Send an Enquiry</h3>
+            <h2 className="font-serif text-2xl font-bold text-wood-950 mb-8">Send an Enquiry</h2>
             
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
               

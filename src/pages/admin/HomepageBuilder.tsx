@@ -353,8 +353,8 @@ export const HomepageBuilder: React.FC = () => {
           {/* Save Draft */}
           <button
             onClick={handleSaveDraft}
-            disabled={saving}
-            className="bg-white border border-wood-300 text-wood-850 hover:bg-wood-50 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
+            disabled={saving || !isDirty}
+            className="bg-white border border-wood-300 text-wood-850 hover:bg-wood-50 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
           >
             {saving ? 'Saving...' : 'Save Draft'}
           </button>
@@ -362,8 +362,8 @@ export const HomepageBuilder: React.FC = () => {
           {/* Publish changes */}
           <button
             onClick={handlePublish}
-            disabled={saving}
-            className="bg-wood-800 hover:bg-wood-950 text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
+            disabled={saving || !isDirty}
+            className="bg-wood-800 hover:bg-wood-950 text-white px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none"
           >
             {saving ? 'Publishing...' : 'Publish Live'}
           </button>

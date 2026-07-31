@@ -141,9 +141,9 @@ export const Gallery: React.FC = () => {
                   </div>
                   <div className="p-5 font-sans">
                     <span className="text-[10px] text-gold-600 font-bold uppercase tracking-wider block mb-1">{albumName}</span>
-                    <h3 className="font-serif text-base font-bold text-wood-950">
+                    <h2 className="font-serif text-base font-bold text-wood-950">
                       {item.title}
-                    </h3>
+                    </h2>
                   </div>
                 </div>
               );

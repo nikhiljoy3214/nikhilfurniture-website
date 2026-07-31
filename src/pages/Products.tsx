@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Search, SlidersHorizontal, ArrowRight } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowRight, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Product } from '../types';
 import { Image } from '../components/Image';
@@ -327,6 +327,7 @@ export const Products: React.FC = () => {
 
   // Collapsable mobile filter drawer state
   const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const activeFilterCount = (currentCategory ? 1 : 0) + (currentWood ? 1 : 0) + (search.trim() ? 1 : 0) + (currentSort !== 'default' ? 1 : 0);
 
   // Resolve dynamic meta title, description, and breadcrumbs for category SEO targeting Thrissur
   const seoTitle = currentCategory
@@ -361,7 +362,7 @@ export const Products: React.FC = () => {
         <div className="mb-12">
           <span className="text-gold-600 font-sans text-xs uppercase tracking-[0.2em] font-bold">Kerala's Premier Showroom</span>
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-wood-900 tracking-wide mt-2">
-            The Furniture Collection
+            {currentCategory ? `${currentCategory} in Thrissur` : 'The Furniture Collection'}
           </h1>
         </div>
 
@@ -545,9 +546,9 @@ export const Products: React.FC = () => {
                       <div>
                         <span className="text-[10px] text-wood-500 font-medium uppercase tracking-wider">{product.category}</span>
                         <Link to={`/products/${product.slug}`}>
-                          <h3 className="font-serif text-lg font-bold text-wood-900 group-hover:text-wood-700 transition-colors mt-1 mb-2">
+                          <h2 className="font-serif text-lg font-bold text-wood-900 group-hover:text-wood-700 transition-colors mt-1 mb-2">
                             {product.name}
-                          </h3>
+                          </h2>
                         </Link>
                         <p className="text-xs text-wood-600/95 leading-relaxed line-clamp-2">
                           {product.short_description}
@@ -608,6 +609,147 @@ export const Products: React.FC = () => {
 
           </div>
         </div>
+        {/* Floating Mobile Filter & Sort Pill Button (High contrast solid dark wood with gold accents) */}
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 lg:hidden pointer-events-auto">
+          <button
+            onClick={() => setShowMobileFilters(true)}
+            className="flex items-center gap-2.5 bg-[#2A180C] text-white py-3.5 px-6 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.35)] border-2 border-gold-400 active:scale-95 transition-all cursor-pointer font-sans text-xs font-black uppercase tracking-wider"
+          >
+            <SlidersHorizontal className="w-4 h-4 text-gold-400 stroke-[2.5]" />
+            <span className="text-white drop-shadow-xs">Filter & Sort</span>
+            {activeFilterCount > 0 && (
+              <span className="w-5 h-5 rounded-full bg-gold-400 text-wood-950 text-[10px] font-black flex items-center justify-center shadow-xs">
+                {activeFilterCount}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Slide-Up Filter Drawer (Bottom Sheet) */}
+        {showMobileFilters && (
+          <div className="fixed inset-0 z-50 bg-wood-950/70 backdrop-blur-xs lg:hidden flex flex-col justify-end animate-fade-in">
+            {/* Backdrop click listener */}
+            <div className="absolute inset-0" onClick={() => setShowMobileFilters(false)} />
+            
+            {/* Slide Up Content Container */}
+            <div className="relative z-10 bg-white rounded-t-3xl max-h-[85vh] overflow-y-auto p-6 shadow-2xl flex flex-col gap-6 font-sans text-xs font-semibold text-wood-700 animate-slide-up border-t border-wood-200">
+              
+              {/* Handlebar & Header */}
+              <div className="flex flex-col gap-3 pb-4 border-b border-wood-100">
+                <div className="w-12 h-1.5 bg-wood-200 rounded-full mx-auto" />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <SlidersHorizontal className="w-4 h-4 text-wood-800" />
+                    <span className="font-serif text-lg font-bold text-wood-950">Filter & Sort</span>
+                    {activeFilterCount > 0 && (
+                      <span className="bg-gold-100 text-gold-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        {activeFilterCount} Active
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-3">
+                    {activeFilterCount > 0 && (
+                      <button
+                        onClick={clearFilters}
+                        className="text-xs text-gold-600 font-bold hover:underline"
+                      >
+                        Reset All
+                      </button>
+                    )}
+                    <button
+                      onClick={() => setShowMobileFilters(false)}
+                      className="p-1.5 rounded-full text-wood-400 hover:text-wood-900 bg-wood-100/60 transition-colors"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Search */}
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Search Product</span>
+                <div className="relative">
+                  <Search className="w-4 h-4 text-wood-400 absolute left-3.5 top-3" />
+                  <input
+                    type="text"
+                    placeholder="e.g. Teak Dining Table..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full bg-wood-50 border border-wood-200 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-none focus:border-wood-500 font-sans"
+                  />
+                </div>
+              </div>
+
+              {/* Category */}
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Furniture Category</span>
+                <select
+                  value={currentCategory}
+                  onChange={(e) => {
+                    handleCategoryChange(e.target.value);
+                    setShowMobileFilters(false);
+                  }}
+                  className="w-full bg-wood-50 border border-wood-200 rounded-xl py-3 px-4 text-xs font-bold focus:outline-none focus:border-wood-500 text-wood-900 cursor-pointer"
+                >
+                  <option value="">All Categories</option>
+                  {categories.map((cat, idx) => (
+                    <option key={idx} value={cat}>{cat}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Timber Species */}
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Timber Species</span>
+                <select
+                  value={currentWood}
+                  onChange={(e) => {
+                    handleWoodChange(e.target.value);
+                    setShowMobileFilters(false);
+                  }}
+                  className="w-full bg-wood-50 border border-wood-200 rounded-xl py-3 px-4 text-xs font-bold focus:outline-none focus:border-wood-500 text-wood-900 cursor-pointer"
+                >
+                  <option value="">All Woods</option>
+                  {woodTypes.map((wood, idx) => (
+                    <option key={idx} value={wood}>{wood}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Sort By */}
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-wood-500">Sort By</span>
+                <select
+                  value={currentSort}
+                  onChange={(e) => {
+                    handleSortChange(e.target.value);
+                    setShowMobileFilters(false);
+                  }}
+                  className="w-full bg-wood-50 border border-wood-200 rounded-xl py-3 px-4 text-xs font-bold focus:outline-none focus:border-wood-500 text-wood-900 cursor-pointer"
+                >
+                  <option value="default">Default Sort</option>
+                  <option value="name-asc">Alphabetical (A-Z)</option>
+                  <option value="name-desc">Alphabetical (Z-A)</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="newest">New Arrivals First</option>
+                </select>
+              </div>
+
+              {/* Apply Action Button */}
+              <div className="pt-2">
+                <button
+                  onClick={() => setShowMobileFilters(false)}
+                  className="w-full bg-wood-800 hover:bg-wood-950 text-white font-bold py-3.5 rounded-xl uppercase tracking-wider text-xs shadow-md active:scale-98 transition-all cursor-pointer"
+                >
+                  Show Results ({totalCount} Pieces)
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

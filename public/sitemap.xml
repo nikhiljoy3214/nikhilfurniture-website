@@ -184,16 +184,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/dark-taupe-classic-3-piece-wooden-sofa-set</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784809674354_library_4aqxd.webp</image:loc>
-      <image:title>Dark Taupe Classic 3 piece Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/terracotta-orange-wooden-basic-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -201,6 +191,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784806810824_library_ph690d.webp</image:loc>
       <image:title>Terracotta Orange Wooden Basic Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Premium Teak Wood with a rich Glossy Honey finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/dark-taupe-classic-3-piece-wooden-sofa-set</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784809674354_library_4aqxd.webp</image:loc>
+      <image:title>Dark Taupe Classic 3 piece Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -214,6 +214,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://nikhilfurniture.com/products/wooden-solid-dining-chair-with-cusion-dark-grey-dup-mfzw</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784995049801_library_rf3y3x.webp</image:loc>
+      <image:title>Wooden Solid Dining Chair with Cusion  (Dark Grey) (Copy) - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Dining Chair made from high-quality Teak/Mahogany</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://nikhilfurniture.com/products/curved-designer-wooden-glass-top-teapoy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -221,16 +231,6 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784992769133_library_gtd0u.webp</image:loc>
       <image:title>Curved Designer Wooden Glass top Teapoy - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted customizable Teapoy made from high-quality Teak/Mahogany</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/tan-brown-wooden-sofa-set</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784807721613_library_ndxfb.webp</image:loc>
-      <image:title>Tan Brown Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Rosewood with a rich Glossy Honey finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -244,13 +244,13 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/wooden-solid-dining-chair-with-cusion-dark-grey-dup-mfzw</loc>
+    <loc>https://nikhilfurniture.com/products/tan-brown-wooden-sofa-set</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784995049801_library_rf3y3x.webp</image:loc>
-      <image:title>Wooden Solid Dining Chair with Cusion  (Dark Grey) (Copy) - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customizable Dining Chair made from high-quality Teak/Mahogany</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784807721613_library_ndxfb.webp</image:loc>
+      <image:title>Tan Brown Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Rosewood with a rich Glossy Honey finish.</image:caption>
     </image:image>
   </url>
   <url>

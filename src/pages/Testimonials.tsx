@@ -109,7 +109,7 @@ export const Testimonials: React.FC = () => {
                     </div>
                   )}
                   <div>
-                    <h4 className="font-bold text-wood-900 text-xs">{rev.name}</h4>
+                    <h2 className="font-bold text-wood-900 text-xs">{rev.name}</h2>
                     <p className="text-[9px] text-wood-500 uppercase tracking-wider font-bold mt-0.5">
                       {rev.role}, {rev.location}
                     </p>

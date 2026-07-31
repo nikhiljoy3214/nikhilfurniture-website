@@ -105,9 +105,9 @@ export const Categories: React.FC = () => {
                 </div>
                 <div className="p-8 flex flex-col justify-between min-h-[180px] font-sans">
                   <div>
-                    <h3 className="font-serif text-xl font-bold text-wood-900 group-hover:text-wood-700 transition-colors">
+                    <h2 className="font-serif text-xl font-bold text-wood-900 group-hover:text-wood-700 transition-colors">
                       {cat.name}
-                    </h3>
+                    </h2>
                     <p className="text-xs text-wood-600 leading-relaxed mt-2.5 font-semibold">
                       {cat.description || cat.description}
                     </p>

@@ -97,9 +97,9 @@ export const FAQ: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <span className="bg-wood-100 text-wood-850 px-2.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider font-sans">{faq.category || 'General'}</span>
                 </div>
-                <h3 className="font-serif text-lg font-bold text-wood-950">
+                <h2 className="font-serif text-lg font-bold text-wood-950">
                   {faq.question}
-                </h3>
+                </h2>
                 <p className="text-xs text-wood-600/90 leading-relaxed font-sans font-medium">
                   {faq.answer}
                 </p>

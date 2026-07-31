@@ -17,6 +17,7 @@ interface SEOProps {
   canonicalUrl?: string;
   ogType?: 'website' | 'product';
   ogImage?: string;
+  robotsMeta?: string;
   breadcrumbs?: BreadcrumbItem[];
   faqs?: FAQItem[];
   schemaType?: 'FurnitureStore' | 'LocalBusiness' | 'Product' | 'None';
@@ -28,7 +29,14 @@ interface SEOProps {
     finish: string;
     dimensions: string;
     url: string;
+    price?: number;
+    basePrice?: number;
+    sku?: string;
+    slug?: string;
   };
+  itemListData?: { name: string; url: string; image?: string; position: number }[];
+  reviewData?: { reviews: { author: string; rating: number; body: string }[]; ratingValue: number; reviewCount: number };
+  imageGalleryData?: { name: string; contentUrl: string; description?: string }[];
 }
 
 // Global in-memory cache to prevent multiple fetches across page mounts
@@ -40,10 +48,14 @@ export const SEO: React.FC<SEOProps> = ({
   canonicalUrl,
   ogType = 'website',
   ogImage,
+  robotsMeta = 'index, follow',
   breadcrumbs,
   faqs,
   schemaType = 'None',
-  productSchemaData
+  productSchemaData,
+  itemListData,
+  reviewData,
+  imageGalleryData
 }) => {
   const [dbSeo, setDbSeo] = useState<any>(cachedSeoSettings);
   const [favicon, setFavicon] = useState<string>('');
@@ -166,6 +178,9 @@ export const SEO: React.FC<SEOProps> = ({
     if (finalKeywords) {
       setMetaTag('name', 'keywords', finalKeywords);
     }
+
+    // 2b. Set Robots Meta Tag
+    setMetaTag('name', 'robots', robotsMeta);
 
     // 3. Set Open Graph (Facebook/Instagram/WhatsApp preview)
     setMetaTag('property', 'og:title', finalTitle);
@@ -321,22 +336,30 @@ export const SEO: React.FC<SEOProps> = ({
 
     // Product Schema (for ProductDetails Page)
     if (schemaType === 'Product' && productSchemaData) {
+      const dynamicPrice = productSchemaData.price || productSchemaData.basePrice || 25000;
       const productSchema = {
         '@context': 'https://schema.org',
         '@type': 'Product',
         'name': productSchemaData.name,
         'image': productSchemaData.image,
         'description': productSchemaData.description,
+        'sku': productSchemaData.sku || productSchemaData.slug || '',
+        'url': productSchemaData.url,
+        'itemCondition': 'https://schema.org/NewCondition',
         'offers': {
-          '@type': 'AggregateOffer',
+          '@type': 'Offer',
           'priceCurrency': 'INR',
-          'lowPrice': '15000',
-          'highPrice': '250000',
-          'offerCount': '1',
+          'price': String(dynamicPrice),
+          'availability': 'https://schema.org/InStock',
+          'seller': {
+            '@type': 'Organization',
+            'name': 'Nikhil Furniture'
+          },
           'priceSpecification': {
             '@type': 'PriceSpecification',
             'valueAddedTaxIncluded': true,
-            'priceCurrency': 'INR'
+            'priceCurrency': 'INR',
+            'price': String(dynamicPrice)
           }
         },
         'additionalProperty': [
@@ -362,6 +385,67 @@ export const SEO: React.FC<SEOProps> = ({
         }
       };
       injectScript(productSchema);
+    }
+
+    // ItemList Schema (for Products/Categories listing pages)
+    if (itemListData && itemListData.length > 0) {
+      const itemListSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'itemListElement': itemListData.map(item => ({
+          '@type': 'ListItem',
+          'position': item.position,
+          'name': item.name,
+          'url': item.url.startsWith('http') ? item.url : `${window.location.origin}${item.url}`,
+          ...(item.image ? { 'image': item.image } : {})
+        }))
+      };
+      injectScript(itemListSchema);
+    }
+
+    // AggregateRating + Review Schema (for Testimonials page)
+    if (reviewData && reviewData.reviews.length > 0) {
+      const reviewSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        'name': 'Nikhil Furniture',
+        'aggregateRating': {
+          '@type': 'AggregateRating',
+          'ratingValue': String(reviewData.ratingValue),
+          'reviewCount': String(reviewData.reviewCount),
+          'bestRating': '5',
+          'worstRating': '1'
+        },
+        'review': reviewData.reviews.map(r => ({
+          '@type': 'Review',
+          'author': { '@type': 'Person', 'name': r.author },
+          'reviewRating': {
+            '@type': 'Rating',
+            'ratingValue': String(r.rating),
+            'bestRating': '5'
+          },
+          'reviewBody': r.body
+        }))
+      };
+      injectScript(reviewSchema);
+    }
+
+    // ImageGallery Schema (for Gallery page)
+    if (imageGalleryData && imageGalleryData.length > 0) {
+      const gallerySchema = {
+        '@context': 'https://schema.org',
+        '@type': 'ImageGallery',
+        'name': finalTitle,
+        'description': finalDescription,
+        'url': finalCanonical,
+        'image': imageGalleryData.map(img => ({
+          '@type': 'ImageObject',
+          'name': img.name,
+          'contentUrl': img.contentUrl,
+          'description': img.description || img.name
+        }))
+      };
+      injectScript(gallerySchema);
     }
 
     // AboutPage Specific Schema
@@ -407,7 +491,7 @@ export const SEO: React.FC<SEOProps> = ({
         }
       });
     };
-  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, ogType, finalOgImage, breadcrumbs, faqs, schemaType, productSchemaData, favicon]);
+  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, ogType, finalOgImage, robotsMeta, breadcrumbs, faqs, schemaType, productSchemaData, itemListData, reviewData, imageGalleryData, favicon]);
 
 
   return null;

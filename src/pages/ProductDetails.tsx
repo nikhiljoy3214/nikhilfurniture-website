@@ -281,6 +281,7 @@ export const ProductDetails: React.FC = () => {
         title={product.seo_title || `${product.name} in Thrissur | Solid Wood Furniture`}
         description={product.seo_description || `Purchase custom ${product.name} in Thrissur, Kerala. Handmade in seasoned ${product.wood_type} with durable ${product.finish} finish. Direct delivery across Kerala.`}
         ogImage={product.featured_image}
+        ogType="product"
         schemaType="Product"
         productSchemaData={{
           name: product.name,
@@ -289,7 +290,11 @@ export const ProductDetails: React.FC = () => {
           woodType: product.wood_type,
           finish: product.finish,
           dimensions: product.dimensions,
-          url: window.location.href
+          url: window.location.href,
+          price: product.base_price || 25000,
+          basePrice: product.base_price,
+          sku: product.slug,
+          slug: product.slug
         }}
         breadcrumbs={[
           { name: 'Home', url: '/' },
