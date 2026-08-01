@@ -355,6 +355,12 @@ export const Products: React.FC = () => {
         title={seoTitle}
         description={seoDescription}
         breadcrumbs={breadcrumbs}
+        itemListData={products.slice(0, 10).map((p, idx) => ({
+          name: p.name,
+          url: `/products/${p.slug}`,
+          image: p.featured_image,
+          position: idx + 1
+        }))}
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">

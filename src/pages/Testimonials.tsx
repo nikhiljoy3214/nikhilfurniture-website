@@ -61,6 +61,15 @@ export const Testimonials: React.FC = () => {
           { name: 'Home', url: '/' },
           { name: 'Testimonials', url: '/testimonials' }
         ]}
+        reviewData={activeReviews.length > 0 ? {
+          reviews: activeReviews.map((r: any) => ({
+            author: r.name,
+            rating: r.rating || 5,
+            body: r.content
+          })),
+          ratingValue: Math.round((activeReviews.reduce((sum: number, r: any) => sum + (r.rating || 5), 0) / activeReviews.length) * 10) / 10,
+          reviewCount: activeReviews.length
+        } : undefined}
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">

@@ -68,6 +68,12 @@ export const Categories: React.FC = () => {
           { name: 'Home', url: '/' },
           { name: 'Categories', url: '/categories' }
         ]}
+        itemListData={categories.map((cat, idx) => ({
+          name: cat.name,
+          url: `/products?category=${encodeURIComponent(cat.name)}`,
+          image: cat.thumbnail_image,
+          position: idx + 1
+        }))}
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">

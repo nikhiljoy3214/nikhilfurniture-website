@@ -75,6 +75,11 @@ export const Gallery: React.FC = () => {
           { name: 'Home', url: '/' },
           { name: 'Gallery', url: '/gallery' }
         ]}
+        imageGalleryData={filteredItems.map((img: any) => ({
+          name: img.title,
+          contentUrl: img.src,
+          description: img.alt_text || img.desc || img.title
+        }))}
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
