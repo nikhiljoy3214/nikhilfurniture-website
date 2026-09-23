@@ -75,15 +75,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products?category=Wardrobes%20%2F%20Almirahs</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
-      <image:title>Wardrobes / Almirahs Category Showcase</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products?category=Teapoys</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -156,6 +147,15 @@
     </image:image>
   </url>
   <url>
+    <loc>https://nikhilfurniture.com/products?category=Wardrobes%20%2F%20Almirahs</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/wardrobe.jpg</image:loc>
+      <image:title>Wardrobes / Almirahs Category Showcase</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://nikhilfurniture.com/products?category=Wooden%20Dining%20Tables</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -171,6 +171,35 @@
     <image:image>
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784805143043_library_yt445j.webp</image:loc>
       <image:title>Corner Sofa Sets Category Showcase</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products?category=Wooden%20Easy%20Chair</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1790177429595_library_q2pds.webp</image:loc>
+      <image:title>Wooden Easy Chair Category Showcase</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/basic-sofa-3-piece-set-burgundy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784805724500_library_vupes.webp</image:loc>
+      <image:title>Basic Sofa 3 piece set - Burgundy - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/dark-taupe-classic-3-piece-wooden-sofa-set</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784809674354_library_4aqxd.webp</image:loc>
+      <image:title>Dark Taupe Classic 3 piece Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -194,23 +223,13 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/dark-taupe-classic-3-piece-wooden-sofa-set</loc>
+    <loc>https://nikhilfurniture.com/products/dark-green-wooden-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784809674354_library_4aqxd.webp</image:loc>
-      <image:title>Dark Taupe Classic 3 piece Wooden Sofa Set - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Jackwood with a rich Natural Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/basic-sofa-3-piece-set-burgundy</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784805724500_library_vupes.webp</image:loc>
-      <image:title>Basic Sofa 3 piece set - Burgundy - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784808198362_library_zu9ft3.webp</image:loc>
+      <image:title>Dark Green Wooden Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Mahogany with a rich Teak Gloss finish.</image:caption>
     </image:image>
   </url>
   <url>
@@ -234,13 +253,13 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/dark-green-wooden-corner-sofa</loc>
+    <loc>https://nikhilfurniture.com/products/study-table</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784808198362_library_zu9ft3.webp</image:loc>
-      <image:title>Dark Green Wooden Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Mahogany with a rich Teak Gloss finish.</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1785847732716_library_lgi2rk.webp</image:loc>
+      <image:title>Study Table  - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium study table</image:caption>
     </image:image>
   </url>
   <url>
@@ -254,26 +273,6 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/wooden-cot</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1783865915135_library_3t8oo.webp</image:loc>
-      <image:title>Wooden Cot - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Test shoe=rt description</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/dark-mauve-wooden-basic-corner-sofa</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784447856189_library_efu73f.webp</image:loc>
-      <image:title>Dark mauve Wooden Basic Corner Sofa  - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Teak/Mahagany with Matte finish.</image:caption>
-    </image:image>
-  </url>
-  <url>
     <loc>https://nikhilfurniture.com/products/white-basic-wooden-corner-sofa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -281,6 +280,16 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784809095971_library_p47hti.webp</image:loc>
       <image:title>White Basic Wooden Corner Sofa - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden sofa sets made from high-quality Anjili with a rich Satin Wax Finish finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/dusky-pink-3-seater-wooden-sofa</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784813114649_library_z92ylg.webp</image:loc>
+      <image:title>Dusky Pink 3 seater Wooden Sofa - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted Dusky Pink 3 seater Wooden Sofa with removal Cushions</image:caption>
     </image:image>
   </url>
   <url>
@@ -294,13 +303,13 @@
     </image:image>
   </url>
   <url>
-    <loc>https://nikhilfurniture.com/products/dusky-pink-3-seater-wooden-sofa</loc>
+    <loc>https://nikhilfurniture.com/products/wooden-modern-rectangle-marbletop-dining-table</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784813114649_library_z92ylg.webp</image:loc>
-      <image:title>Dusky Pink 3 seater Wooden Sofa - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted Dusky Pink 3 seater Wooden Sofa with removal Cushions</image:caption>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1785847119904_library_5ntln.webp</image:loc>
+      <image:title>Wooden Modern Rectangle Marbletop Dining Table - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Dining Table with marble top in rectangular shape  made from high-quality Teak/Mahogany</image:caption>
     </image:image>
   </url>
   <url>
@@ -344,6 +353,46 @@
     </image:image>
   </url>
   <url>
+    <loc>https://nikhilfurniture.com/products/octagonal-glass-top-wooden-teapoy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784813697523_library_d4e80p.webp</image:loc>
+      <image:title>Octagonal Glass Top Wooden Teapoy - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted Octagonal Glass Top Wooden Teapoy made with Mahogany/ Teakwood</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/dark-mauve-wooden-basic-corner-sofa</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784447856189_library_efu73f.webp</image:loc>
+      <image:title>Dark mauve Wooden Basic Corner Sofa  - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Teak/Mahagany with Matte finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/relaxing-easy-chair</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1790177429595_library_q2pds.webp</image:loc>
+      <image:title>Relaxing Easy Chair - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Relax in comfort with this stylish wooden Easy Chair, crafted from premium Teak or Mahogany wood with a reclining slatted design for a comfortable lounging experience.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/wooden-rectangle-glasstop-dining-table</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1785845362579_library_414ffc.webp</image:loc>
+      <image:title>Wooden Rectangle Glasstop Dining Table - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customizable Dining Table in rectangular shape  made from high-quality Teak/Mahogany</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://nikhilfurniture.com/products/wooden-outdoor-bench-with-armrests</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -351,6 +400,36 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784993737019_library_7mi4li.webp</image:loc>
       <image:title>Wooden Outdoor Bench with Armrests - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Teak /Mahogany</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/wooden-3-seater-sofa</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1785847986695_library_fo8e1t.webp</image:loc>
+      <image:title>Wooden 3 seater sofa  - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted office furniture made from high-quality Premium Teak Wood with a rich Teak Gloss finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/berry-wooden-basic-corner-sofa</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1785848343306_library_f79imp.webp</image:loc>
+      <image:title>Berry  Wooden Basic Corner Sofa   - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted customized furniture made from high-quality Teak/Mahagany with Matte finish.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://nikhilfurniture.com/products/basic-wooden-bench</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784994414457_library_00ke7h.webp</image:loc>
+      <image:title>Basic Wooden Bench - Handcrafted Solid Wood Furniture</image:title>
+      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Premium Teak /Mahogany</image:caption>
     </image:image>
   </url>
   <url>
@@ -401,26 +480,6 @@
       <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784810806758_library_i7jsjo.webp</image:loc>
       <image:title>Beige Removable Cushion Wooden Sofa  - Handcrafted Solid Wood Furniture</image:title>
       <image:caption>Elegant, premium handcrafted Beige Removable Cushion  3 piece Wooden Sofa Set</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/octagonal-glass-top-wooden-teapoy</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784813697523_library_d4e80p.webp</image:loc>
-      <image:title>Octagonal Glass Top Wooden Teapoy - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted Octagonal Glass Top Wooden Teapoy made with Mahogany/ Teakwood</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://nikhilfurniture.com/products/basic-wooden-bench</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://psbbpjdpadygskkjfyon.supabase.co/storage/v1/object/public/furniture/1784994414457_library_00ke7h.webp</image:loc>
-      <image:title>Basic Wooden Bench - Handcrafted Solid Wood Furniture</image:title>
-      <image:caption>Elegant, premium handcrafted wooden benches made from high-quality Premium Teak /Mahogany</image:caption>
     </image:image>
   </url>
   <url>

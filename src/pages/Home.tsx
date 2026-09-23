@@ -317,12 +317,14 @@ export const Home: React.FC = () => {
     return <Sparkles className="w-6 h-6" />;
   };
 
-  // Dynamic Featured Categories Override
+  // Dynamic Featured Categories Override (Respects admin categories is_featured flag)
   const selectedSlugs = homeConfig?.featuredCategories?.selected_slugs || ['wooden-sofa-sets', 'wooden-dining-tables', 'wooden-cots', 'wardrobes-almirahs', 'customized-furniture'];
   const maxCats = homeConfig?.featuredCategories?.max_count || 6;
+  const featuredDbCats = dbCategories.filter(c => c.is_featured === true);
+  const activeCategoryList = featuredDbCats.length > 0 ? featuredDbCats : dbCategories.filter(c => selectedSlugs.includes(c.slug));
+
   const categories = dbCategories.length > 0
-    ? dbCategories
-        .filter(c => selectedSlugs.includes(c.slug))
+    ? activeCategoryList
         .slice(0, maxCats)
         .map(c => ({
           name: c.name,

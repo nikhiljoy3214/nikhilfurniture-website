@@ -148,7 +148,7 @@ export const Products: React.FC = () => {
     'Study Tables', 'Office Furniture', 'Customized Furniture'
   ]);
 
-  // Dynamically extract distinct Timber Species (from wood_type column & matrix_attributes JSON) and Categories
+  // Dynamically extract distinct Timber Species and Categories (from database categories table & product assignments)
   useEffect(() => {
     const fetchDynamicFilters = async () => {
       try {
@@ -156,17 +156,30 @@ export const Products: React.FC = () => {
           .from('products')
           .select('wood_type, category, specifications');
 
-        if (prods && prods.length > 0) {
-          const woodSet = new Set<string>();
-          const catSet = new Set<string>();
+        const { data: dbCats } = await supabase
+          .from('categories')
+          .select('name')
+          .eq('is_visible', true)
+          .order('sort_order', { ascending: true });
 
+        const woodSet = new Set<string>();
+        const catSet = new Set<string>();
+
+        // 1. Collect Categories from categories table
+        if (dbCats) {
+          dbCats.forEach((c: any) => {
+            if (c.name && c.name.trim()) catSet.add(c.name.trim());
+          });
+        }
+
+        if (prods && prods.length > 0) {
           prods.forEach((p: any) => {
-            // 1. Collect Categories
+            // 2. Collect Categories from products
             if (p.category && p.category.trim()) {
               catSet.add(p.category.trim());
             }
 
-            // 2. Collect from wood_type column (handles single or multi-wood strings like "Mahagony, Teak")
+            // 3. Collect from wood_type column
             if (p.wood_type && p.wood_type.trim()) {
               const parts = p.wood_type.split(/[,/|]|\band\b/i);
               parts.forEach((part: string) => {
@@ -175,7 +188,7 @@ export const Products: React.FC = () => {
               });
             }
 
-            // 3. Collect from matrix_attributes inside specifications JSON (from Wood & Pricing tab)
+            // 4. Collect from matrix_attributes inside specifications JSON
             if (p.specifications && Array.isArray(p.specifications.matrix_attributes)) {
               p.specifications.matrix_attributes.forEach((attr: any) => {
                 if (attr && attr.name && /wood/i.test(attr.name) && Array.isArray(attr.values)) {
@@ -188,16 +201,16 @@ export const Products: React.FC = () => {
               });
             }
           });
+        }
 
-          if (woodSet.size > 0) {
-            const sortedWoods = Array.from(woodSet).sort((a, b) => a.localeCompare(b));
-            setWoodTypes(sortedWoods);
-          }
+        if (woodSet.size > 0) {
+          const sortedWoods = Array.from(woodSet).sort((a, b) => a.localeCompare(b));
+          setWoodTypes(sortedWoods);
+        }
 
-          if (catSet.size > 0) {
-            const sortedCats = Array.from(catSet).sort((a, b) => a.localeCompare(b));
-            setCategories(sortedCats);
-          }
+        if (catSet.size > 0) {
+          const sortedCats = Array.from(catSet);
+          setCategories(sortedCats);
         }
       } catch (err) {
         console.error('Error fetching dynamic filters:', err);

@@ -45,7 +45,7 @@ export const Categories: React.FC = () => {
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 50;
 
   // Sorting for Categories
   const [sortField, setSortField] = useState<string>('sort_order');
@@ -542,6 +542,8 @@ export const Categories: React.FC = () => {
     );
   });
 
+  const totalPages = Math.ceil(filteredCategories.length / itemsPerPage) || 1;
+
   const paginatedCategories = filteredCategories.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -729,6 +731,36 @@ export const Categories: React.FC = () => {
                   </tbody>
                 </table>
               </div>
+
+              {/* Pagination & Total Count Footer */}
+              {filteredCategories.length > 0 && (
+                <div className="px-6 py-4 bg-wood-50/50 border-t border-wood-100 flex items-center justify-between text-xs font-semibold text-wood-600">
+                  <span>
+                    Showing {Math.min((currentPage - 1) * itemsPerPage + 1, filteredCategories.length)} to {Math.min(currentPage * itemsPerPage, filteredCategories.length)} of {filteredCategories.length} Categories
+                  </span>
+                  {totalPages > 1 && (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
+                        disabled={currentPage === 1}
+                        className="px-3 py-1.5 rounded-lg border border-wood-200 bg-white text-wood-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-wood-50 transition-colors cursor-pointer"
+                      >
+                        Previous
+                      </button>
+                      <span className="px-2 font-mono">
+                        Page {currentPage} of {totalPages}
+                      </span>
+                      <button
+                        onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
+                        disabled={currentPage === totalPages}
+                        className="px-3 py-1.5 rounded-lg border border-wood-200 bg-white text-wood-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-wood-50 transition-colors cursor-pointer"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </>

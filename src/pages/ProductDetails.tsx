@@ -578,7 +578,7 @@ export const ProductDetails: React.FC = () => {
                 className="w-full bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-full font-semibold uppercase tracking-wider text-xs transition-all duration-300 shadow-md shadow-[#25D366]/10 flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-5 h-5 fill-white" />
-                Enquire via WhatsApp
+                Buy Now
               </a>
               <div className="grid grid-cols-2 gap-3">
                 <a

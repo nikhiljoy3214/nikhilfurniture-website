@@ -98,7 +98,7 @@ export const Products: React.FC = () => {
     'Study Tables', 'Office Furniture', 'Customized Furniture'
   ];
 
-  // 1. Fetch catalog products (all columns)
+  // 1. Fetch catalog products (all columns) and dynamic categories
   const fetchProducts = async () => {
     setLoading(true);
     try {
@@ -108,6 +108,14 @@ export const Products: React.FC = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
+
+      // Fetch dynamic categories from categories table
+      const { data: dbCats } = await supabase
+        .from('categories')
+        .select('name')
+        .eq('is_visible', true)
+        .order('sort_order', { ascending: true });
+
       if (data) {
         setAllProducts(data as Product[]);
         
@@ -115,7 +123,11 @@ export const Products: React.FC = () => {
         const uniqueWood = Array.from(new Set(data.map(p => p.wood_type).filter(Boolean)));
         const uniqueFinish = Array.from(new Set(data.map(p => p.finish).filter(Boolean)));
         
-        setCategoriesList(categories);
+        const dbCatNames = dbCats ? dbCats.map(c => c.name).filter(Boolean) : [];
+        const prodCatNames = data.map(p => p.category).filter(Boolean);
+        const mergedCategories = Array.from(new Set([...dbCatNames, ...prodCatNames, ...categories]));
+
+        setCategoriesList(mergedCategories);
         setWoodTypesList(uniqueWood);
         setFinishesList(uniqueFinish);
       }
@@ -782,7 +794,7 @@ export const Products: React.FC = () => {
       <ProductEditor
         product={editingProduct}
         allProducts={allProducts}
-        categories={categories}
+        categories={categoriesList}
         isOpen={editorOpen}
         onClose={() => setEditorOpen(false)}
         onSave={handleSaveProduct}
