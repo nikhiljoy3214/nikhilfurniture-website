@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
@@ -9,7 +10,10 @@ const enquirySchema = zod.object({
   phone: zod.string().min(10, 'Please enter a valid 10-digit phone number'),
   location: zod.string().min(2, 'Location / City is required'),
   requirement: zod.string().min(1, 'Please select a requirement'),
-  message: zod.string().min(5, 'Message must be at least 5 characters')
+  message: zod.string().min(5, 'Message must be at least 5 characters'),
+  termsAccepted: zod.literal(true, {
+    errorMap: () => ({ message: 'You must agree to the Terms & Privacy Policy.' })
+  })
 });
 
 type EnquiryFormValues = zod.infer<typeof enquirySchema>;
@@ -41,7 +45,8 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
       phone: '',
       location: '',
       requirement: productCategory || 'Custom Furniture',
-      message: productName ? `Interested in custom dimensions / specifications for "${productName}".` : ''
+      message: productName ? `Interested in custom dimensions / specifications for "${productName}".` : '',
+      termsAccepted: false as unknown as true
     }
   });
 
@@ -52,7 +57,8 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
         phone: '',
         location: '',
         requirement: productCategory || 'Custom Furniture',
-        message: productName ? `Interested in custom dimensions / specifications for "${productName}".` : ''
+        message: productName ? `Interested in custom dimensions / specifications for "${productName}".` : '',
+        termsAccepted: false as unknown as true
       });
     }
   }, [isOpen, productName, productCategory, reset]);
@@ -175,8 +181,25 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
             {errors.message && <span className="text-[10px] text-red-500">{errors.message.message}</span>}
           </div>
 
+          {/* Legal Terms & Consent Checkbox */}
+          <div className="flex flex-col gap-1">
+            <label className="flex items-start gap-2 text-[11px] text-wood-700 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                {...register('termsAccepted')}
+                className="mt-0.5 rounded border-wood-300 text-wood-800 focus:ring-wood-500 w-3.5 h-3.5 cursor-pointer shrink-0"
+              />
+              <span className="font-normal text-[10px] leading-tight">
+                I agree to the <Link to="/terms-conditions" target="_blank" className="underline font-bold text-wood-900 hover:text-wood-600">Terms</Link> & <Link to="/privacy-policy" target="_blank" className="underline font-bold text-wood-900 hover:text-wood-600">Privacy Policy</Link>, and consent to being contacted regarding this enquiry.
+              </span>
+            </label>
+            {errors.termsAccepted && (
+              <span className="text-[10px] text-red-500 font-semibold pl-5.5">{errors.termsAccepted.message}</span>
+            )}
+          </div>
+
           {/* Action Buttons */}
-          <div className="flex items-center gap-3 pt-3 border-t border-wood-100 mt-2">
+          <div className="flex items-center gap-3 pt-3 border-t border-wood-100 mt-1">
             <button
               type="button"
               onClick={onClose}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
@@ -11,7 +12,10 @@ const contactFormSchema = zod.object({
   phone: zod.string().min(10, 'Please enter a valid phone number'),
   location: zod.string().min(2, 'Location / City is required'),
   requirement: zod.string().min(1, 'Please select a requirement'),
-  message: zod.string().min(5, 'Message must be at least 5 characters')
+  message: zod.string().min(5, 'Message must be at least 5 characters'),
+  termsAccepted: zod.literal(true, {
+    errorMap: () => ({ message: 'You must agree to the Terms & Privacy Policy to submit an enquiry.' })
+  })
 });
 
 type ContactFormValues = zod.infer<typeof contactFormSchema>;
@@ -52,7 +56,8 @@ export const Contact: React.FC = () => {
       phone: '',
       location: '',
       requirement: 'Custom Sofa Set',
-      message: ''
+      message: '',
+      termsAccepted: false as unknown as true
     }
   });
 
@@ -245,9 +250,26 @@ export const Contact: React.FC = () => {
                 {errors.message && <span className="text-[10px] text-red-500 font-semibold">{errors.message.message}</span>}
               </div>
 
+              {/* Legal Terms & Consent Checkbox */}
+              <div className="flex flex-col gap-1 mt-1 font-sans">
+                <label className="flex items-start gap-2.5 text-xs text-wood-700 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    {...register('termsAccepted')}
+                    className="mt-0.5 rounded border-wood-300 text-wood-800 focus:ring-wood-500 w-4 h-4 cursor-pointer shrink-0"
+                  />
+                  <span className="font-normal text-[11px] leading-snug">
+                    I agree to the <Link to="/terms-conditions" target="_blank" className="underline font-bold text-wood-900 hover:text-wood-600">Terms & Conditions</Link> and <Link to="/privacy-policy" target="_blank" className="underline font-bold text-wood-900 hover:text-wood-600">Privacy Policy</Link>, and consent to being contacted regarding this enquiry.
+                  </span>
+                </label>
+                {errors.termsAccepted && (
+                  <span className="text-[10px] text-red-500 font-semibold pl-6">{errors.termsAccepted.message}</span>
+                )}
+              </div>
+
               <button
                 type="submit"
-                className="w-full bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-full font-semibold uppercase tracking-wider text-xs transition-colors flex items-center justify-center gap-2 mt-4 shadow-sm border-none cursor-pointer"
+                className="w-full bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-full font-semibold uppercase tracking-wider text-xs transition-colors flex items-center justify-center gap-2 mt-2 shadow-sm border-none cursor-pointer"
               >
                 <MessageCircle className="w-5 h-5 fill-white" />
                 Submit and Chat on WhatsApp
