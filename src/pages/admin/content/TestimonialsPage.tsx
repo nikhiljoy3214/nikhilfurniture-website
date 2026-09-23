@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../../lib/supabase';
 import { SEO } from '../../../components/SEO';
-import { Plus, Trash2, Edit3, Star, Eye, RotateCcw, AlertCircle, Loader2 } from 'lucide-react';
+import { Plus, Trash2, Edit3, Star, Eye, RotateCcw, AlertCircle, Loader2, ArrowUp, ArrowDown } from 'lucide-react';
 import { MediaLibraryPicker } from '../../../components/admin/MediaLibraryPicker';
 
 const defaultTestimonialsConfig = {
@@ -107,6 +107,38 @@ export const TestimonialsPage: React.FC = () => {
       const newTestimonials = config.testimonials.filter((x: any) => x.id !== id);
       triggerSaveState({ ...config, testimonials: newTestimonials });
     }
+  };
+
+  const toggleVisibility = (id: string) => {
+    const newTestimonials = config.testimonials.map((x: any) =>
+      x.id === id ? { ...x, is_visible: !x.is_visible } : x
+    );
+    triggerSaveState({ ...config, testimonials: newTestimonials });
+  };
+
+  const toggleFeatured = (id: string) => {
+    const newTestimonials = config.testimonials.map((x: any) =>
+      x.id === id ? { ...x, is_featured: !x.is_featured } : x
+    );
+    triggerSaveState({ ...config, testimonials: newTestimonials });
+  };
+
+  const moveOrder = (id: string, direction: 'up' | 'down') => {
+    const idx = config.testimonials.findIndex((x: any) => x.id === id);
+    if (idx === -1) return;
+    const targetIdx = direction === 'up' ? idx - 1 : idx + 1;
+    if (targetIdx < 0 || targetIdx >= config.testimonials.length) return;
+
+    const list = [...config.testimonials];
+    const temp = list[idx];
+    list[idx] = list[targetIdx];
+    list[targetIdx] = temp;
+
+    const updated = list.map((item: any, i: number) => ({
+      ...item,
+      sort_order: i + 1
+    }));
+    triggerSaveState({ ...config, testimonials: updated });
   };
 
   // Avatar Upload
@@ -275,23 +307,56 @@ export const TestimonialsPage: React.FC = () => {
                       {item.content}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <div className="flex justify-center gap-1">
-                        {item.is_visible ? (
-                          <span className="bg-emerald-100 text-emerald-800 text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Visible</span>
-                        ) : (
-                          <span className="bg-wood-100 text-wood-650 text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Hidden</span>
-                        )}
-                        {item.is_featured && (
-                          <span className="bg-gold-100 text-gold-800 text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">Featured</span>
-                        )}
+                      <div className="flex justify-center items-center gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() => toggleVisibility(item.id)}
+                          title="Click to toggle visibility"
+                          className={`text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border-none cursor-pointer transition-colors ${
+                            item.is_visible
+                              ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
+                              : 'bg-wood-150 text-wood-600 hover:bg-wood-200'
+                          }`}
+                        >
+                          {item.is_visible ? 'Visible' : 'Hidden'}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => toggleFeatured(item.id)}
+                          title="Click to toggle featured status"
+                          className={`text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border-none cursor-pointer transition-colors ${
+                            item.is_featured
+                              ? 'bg-gold-100 text-gold-800 hover:bg-gold-200'
+                              : 'bg-wood-100 text-wood-400 hover:bg-wood-200'
+                          }`}
+                        >
+                          {item.is_featured ? 'Featured' : '+ Feature'}
+                        </button>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
-                      <div className="flex justify-center items-center gap-3">
-                        <button onClick={() => handleEditClick(item)} className="text-wood-600 hover:text-wood-900 bg-transparent border-none cursor-pointer">
+                      <div className="flex justify-center items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => moveOrder(item.id, 'up')}
+                          title="Move Up"
+                          className="p-1 hover:bg-wood-100 rounded text-wood-600 border-none cursor-pointer"
+                        >
+                          <ArrowUp className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => moveOrder(item.id, 'down')}
+                          title="Move Down"
+                          className="p-1 hover:bg-wood-100 rounded text-wood-600 border-none cursor-pointer"
+                        >
+                          <ArrowDown className="w-3.5 h-3.5" />
+                        </button>
+                        <button onClick={() => handleEditClick(item)} title="Edit Review" className="text-wood-600 hover:text-wood-900 bg-transparent border-none cursor-pointer p-1">
                           <Edit3 className="w-4 h-4" />
                         </button>
-                        <button onClick={() => handleDelete(item.id)} className="text-red-500 hover:text-red-700 bg-transparent border-none cursor-pointer">
+                        <button onClick={() => handleDelete(item.id)} title="Delete Review" className="text-red-500 hover:text-red-700 bg-transparent border-none cursor-pointer p-1">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>

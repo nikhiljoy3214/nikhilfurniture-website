@@ -421,8 +421,20 @@ export const Home: React.FC = () => {
 
   // Dynamic Testimonials Section
   const maxTestimonials = homeConfig?.testimonials?.max_count || 6;
-  const rawTestimonials = (dynamicTestimonials.length > 0
-    ? dynamicTestimonials.filter((t: any) => t.is_visible !== false)
+  const isFeaturedOnly = homeConfig?.testimonials?.featured_only ?? false;
+
+  const filteredTestimonials = dynamicTestimonials.length > 0
+    ? dynamicTestimonials
+        .filter((t: any) => {
+          if (t.is_visible === false) return false;
+          if (isFeaturedOnly && !t.is_featured) return false;
+          return true;
+        })
+        .sort((a: any, b: any) => (a.sort_order || 0) - (b.sort_order || 0))
+    : [];
+
+  const rawTestimonials = (filteredTestimonials.length > 0
+    ? filteredTestimonials
     : [
         { name: 'Dr. Suresh Madhavan', loc: 'Kochi', purchase: 'Bespoke Dining Suite', text: 'Nikhil Furniture exceeded all our expectations. The wood quality is genuine Nilambur teak and the finish matches the premium international collections we saw in showrooms. A perfect addition to our home.', rating: 5, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200' },
         { name: 'Meera Nair', loc: 'Thrissur', purchase: 'Custom Teak Wardrobe', text: 'The carpenters are highly skilled. They visited our home, took exact measurements of the wardrobe space, and designed a custom teak unit that fits perfectly. Highly recommended for custom wooden orders.', rating: 5, avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200' },
@@ -438,13 +450,14 @@ export const Home: React.FC = () => {
   }));
 
   const testimonials = rawTestimonials.slice(0, maxTestimonials);
+  const currentTestimonial = testimonials[activeTestimonial] || testimonials[0];
 
   const handlePrevTestimonial = () => {
-    setActiveTestimonial(prev => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    setActiveTestimonial(prev => (prev <= 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const handleNextTestimonial = () => {
-    setActiveTestimonial(prev => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    setActiveTestimonial(prev => (prev >= testimonials.length - 1 ? 0 : prev + 1));
   };
 
   // Dynamic Gallery Section
@@ -1008,7 +1021,7 @@ export const Home: React.FC = () => {
       )}
 
       {/* 10. TESTIMONIAL CUSTOMER REVIEWS */}
-      {(!homeConfig || homeConfig.testimonials?.enabled !== false) && testimonials.length > 0 && (
+      {(!homeConfig || homeConfig.testimonials?.enabled !== false) && testimonials.length > 0 && currentTestimonial && (
         <section className="py-28 bg-wood-50 font-sans">
           <div className="max-w-5xl mx-auto px-6">
             
@@ -1022,24 +1035,24 @@ export const Home: React.FC = () => {
             <div className="bg-white rounded-3xl p-8 md:p-12 border border-wood-200/40 shadow-sm relative flex flex-col md:flex-row gap-8 items-center min-h-[300px]">
               
               <div className="w-20 h-20 rounded-full overflow-hidden shrink-0 border border-wood-200 shadow-sm bg-wood-50">
-                <img src={testimonials[activeTestimonial].avatar} alt={testimonials[activeTestimonial].name} className="w-full h-full object-cover" />
+                <img src={currentTestimonial.avatar} alt={currentTestimonial.name} className="w-full h-full object-cover" />
               </div>
 
               <div className="flex-grow flex flex-col gap-4">
                 <div className="flex gap-1 text-gold-500">
-                  {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
+                  {[...Array(currentTestimonial.rating || 5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-gold-400 text-gold-400" />
                   ))}
                 </div>
                 <p className="font-serif text-base md:text-lg text-wood-850 italic leading-relaxed">
-                  "{testimonials[activeTestimonial].text}"
+                  "{currentTestimonial.text}"
                 </p>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-wood-950 font-sans tracking-wide">
-                    {testimonials[activeTestimonial].name}
+                    {currentTestimonial.name}
                   </span>
                   <span className="text-[10px] text-wood-400 font-sans mt-0.5 font-bold">
-                    {testimonials[activeTestimonial].loc} • Verified {testimonials[activeTestimonial].purchase} Owner
+                    {currentTestimonial.loc}{currentTestimonial.purchase ? ` • Verified ${currentTestimonial.purchase} Owner` : ''}
                   </span>
                 </div>
               </div>

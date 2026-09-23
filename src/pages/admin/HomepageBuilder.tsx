@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import { SEO } from '../../components/SEO';
 import {
@@ -8,6 +9,7 @@ import {
   RotateCcw,
   Loader2,
   AlertCircle,
+  Edit3,
 } from 'lucide-react';
 import { MediaLibraryPicker } from '../../components/admin/MediaLibraryPicker';
 
@@ -1488,6 +1490,16 @@ export const HomepageBuilder: React.FC = () => {
                     Featured customer reviews only
                   </label>
                 </div>
+              </div>
+
+              <div className="pt-3 border-t border-wood-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span className="text-[11px] text-wood-500 font-normal">Need to add, edit, feature, or reorder client review entries?</span>
+                <Link
+                  to="/admin/content/testimonials"
+                  className="inline-flex items-center gap-1.5 text-xs text-wood-800 hover:text-wood-950 font-bold uppercase tracking-wider bg-wood-100 hover:bg-wood-200 px-3.5 py-2 rounded-xl transition-colors cursor-pointer decoration-transparent shrink-0"
+                >
+                  <Edit3 className="w-3.5 h-3.5" /> Manage Customer Reviews List
+                </Link>
               </div>
             </div>
           )}
