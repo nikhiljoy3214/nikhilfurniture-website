@@ -319,9 +319,9 @@ export const Home: React.FC = () => {
 
   // Dynamic Featured Categories Override (Respects admin categories is_featured flag)
   const selectedSlugs = homeConfig?.featuredCategories?.selected_slugs || ['wooden-sofa-sets', 'wooden-dining-tables', 'wooden-cots', 'wardrobes-almirahs', 'customized-furniture'];
-  const maxCats = homeConfig?.featuredCategories?.max_count || 6;
-  const featuredDbCats = dbCategories.filter(c => c.is_featured === true);
-  const activeCategoryList = featuredDbCats.length > 0 ? featuredDbCats : dbCategories.filter(c => selectedSlugs.includes(c.slug));
+  const maxCats = homeConfig?.featuredCategories?.max_count || 24;
+  const featuredDbCats = dbCategories.filter(c => c.is_featured === true && c.is_visible !== false);
+  const activeCategoryList = featuredDbCats.length > 0 ? featuredDbCats : dbCategories.filter(c => selectedSlugs.includes(c.slug) && c.is_visible !== false);
 
   const categories = dbCategories.length > 0
     ? activeCategoryList
