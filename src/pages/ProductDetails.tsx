@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { MessageCircle, Phone, ArrowLeft, ArrowRight, Check, Info, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Phone, ArrowLeft, ArrowRight, Check, Info, ChevronLeft, ChevronRight, Search, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Product } from '../types';
 import { Image } from '../components/Image';
@@ -29,6 +29,7 @@ export const ProductDetails: React.FC = () => {
   const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
   const [recentlyViewed, setRecentlyViewed] = useState<any[]>([]);
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const viewTrackedSlug = useRef<string | null>(null);
 
   // Set the restore flag on mount so the products page knows we came from detail view
@@ -276,7 +277,7 @@ export const ProductDetails: React.FC = () => {
   };
 
   return (
-    <div className="py-12 bg-wood-50">
+    <div className="py-4 md:py-12 pb-20 md:pb-12 bg-wood-50">
       <SEO
         title={product.seo_title || `${product.name} in Thrissur | Solid Wood Furniture`}
         description={product.seo_description || `Purchase custom ${product.name} in Thrissur, Kerala. Handmade in seasoned ${product.wood_type} with durable ${product.finish} finish. Direct delivery across Kerala.`}
@@ -304,20 +305,20 @@ export const ProductDetails: React.FC = () => {
         ]}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-12">
         {/* Back navigation */}
         <Link
           to="/products"
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-wood-600 hover:text-wood-950 transition-colors mb-10"
+          className="inline-flex items-center gap-2 text-[11px] md:text-xs font-bold uppercase tracking-wider text-wood-600 hover:text-wood-950 transition-colors mb-3 md:mb-10"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-3.5 h-3.5 md:w-4 md:h-4" />
           Back to Catalog
         </Link>
 
         {/* Product Details Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-12 items-start mb-12 md:mb-24">
           
-          {/* Left: Gallery Picker with Smooth Sliding Track & Navigation Arrows */}
+          {/* Left: Gallery Picker */}
           {(() => {
             const galleryList = product.gallery_images && product.gallery_images.length > 0 
               ? product.gallery_images 
@@ -338,15 +339,16 @@ export const ProductDetails: React.FC = () => {
             };
 
             return (
-              <div className="lg:col-span-7 flex flex-col gap-4">
+              <div className="lg:col-span-7 flex flex-col gap-3 md:gap-4">
                 
-                {/* Primary Main Image Showcase Box with Horizontal Sliding Track */}
-                <div className="rounded-3xl overflow-hidden shadow-sm border border-wood-200/40 relative bg-white aspect-[4/3] max-h-[500px] group select-none">
+                {/* Primary Main Image Showcase Box (Compact height on mobile for 1st view visibility) */}
+                <div className="rounded-2xl md:rounded-3xl overflow-hidden shadow-sm border border-wood-200/40 relative bg-white aspect-[4/3] max-h-[220px] sm:max-h-[300px] md:max-h-[500px] group select-none">
                   
                   {/* Sliding Image Track */}
                   <div
-                    className="w-full h-full flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                    className="w-full h-full flex transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer"
                     style={{ transform: `translateX(-${currentIdx * 100}%)` }}
+                    onClick={() => setIsLightboxOpen(true)}
                   >
                     {galleryList.map((img, idx) => (
                       <div key={idx} className="w-full h-full shrink-0 relative">
@@ -359,9 +361,16 @@ export const ProductDetails: React.FC = () => {
                     ))}
                   </div>
 
-                  {/* Top Right Wishlist Button */}
-                  <div className="absolute top-4 right-4 z-10">
+                  {/* Top Right Zoom Search & Wishlist Buttons */}
+                  <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10 flex items-center gap-1.5 md:gap-2">
                     <WishlistButton product={product} className="shadow-md" showText={false} />
+                    <button
+                      onClick={() => setIsLightboxOpen(true)}
+                      className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white/90 hover:bg-white text-wood-900 border border-wood-200/60 shadow flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                      title="Zoom Image"
+                    >
+                      <Search className="w-3.5 h-3.5 md:w-4 md:h-4 stroke-[2.5]" />
+                    </button>
                   </div>
 
                   {/* Navigation Controls Overlay */}
@@ -371,24 +380,24 @@ export const ProductDetails: React.FC = () => {
                       <button
                         onClick={handlePrev}
                         aria-label="Previous image"
-                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-wood-900 border border-wood-200/60 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                        className="absolute left-2.5 md:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/90 hover:bg-white text-wood-900 border border-wood-200/60 shadow-md backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
                         title="Previous Image"
                       >
-                        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+                        <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 stroke-[2.5]" />
                       </button>
 
                       {/* Right (Next Image) Arrow */}
                       <button
                         onClick={handleNext}
                         aria-label="Next image"
-                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-wood-900 border border-wood-200/60 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                        className="absolute right-2.5 md:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/90 hover:bg-white text-wood-900 border border-wood-200/60 shadow-md backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
                         title="Next Image"
                       >
-                        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+                        <ChevronRight className="w-4 h-4 md:w-5 md:h-5 stroke-[2.5]" />
                       </button>
 
                       {/* Image Counter Badge */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 bg-wood-950/75 text-white text-[11px] font-bold py-1 px-3.5 rounded-full backdrop-blur-md shadow-md tracking-wider">
+                      <div className="absolute bottom-2.5 md:bottom-4 left-1/2 -translate-x-1/2 z-10 bg-wood-950/75 text-white text-[10px] md:text-[11px] font-bold py-0.5 md:py-1 px-3 md:px-3.5 rounded-full backdrop-blur-md shadow-md tracking-wider">
                         {currentIdx + 1} / {galleryList.length}
                       </div>
                     </>
@@ -397,15 +406,15 @@ export const ProductDetails: React.FC = () => {
 
                 {/* Thumbnail Selectors */}
                 {galleryList.length > 1 && (
-                  <div className="flex items-center gap-4 overflow-x-auto py-2">
+                  <div className="flex items-center gap-2 md:gap-3 overflow-x-auto py-0.5">
                     {galleryList.map((img, idx) => (
                       <button
                         key={idx}
                         onClick={() => setSelectedImage(img)}
-                        className={`w-24 h-18 rounded-xl overflow-hidden border-2 shrink-0 transition-all cursor-pointer ${
+                        className={`w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden border-2 shrink-0 transition-all cursor-pointer ${
                           selectedImage === img
-                            ? 'border-gold-500 scale-102 shadow-sm'
-                            : 'border-transparent opacity-70 hover:opacity-100'
+                            ? 'border-wood-900 scale-102 shadow-sm'
+                            : 'border-wood-200/60 opacity-80 hover:opacity-100'
                         }`}
                       >
                         <img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover" />
@@ -418,38 +427,40 @@ export const ProductDetails: React.FC = () => {
           })()}
 
           {/* Right: Product Metadata & Actions */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="lg:col-span-5 flex flex-col gap-3.5 md:gap-6">
             <div>
-              <span className="text-xs text-gold-600 font-bold uppercase tracking-[0.15em] block mb-2">{product.category}</span>
-              <h1 className="font-serif text-3xl md:text-4xl font-bold text-wood-900 tracking-wide leading-tight mb-4">
+              <span className="text-[10px] md:text-xs text-gold-600 font-bold uppercase tracking-[0.15em] block mb-0.5 md:mb-1">{product.category}</span>
+              <h1 className="font-serif text-2xl md:text-4xl font-bold text-wood-950 tracking-wide leading-tight mb-2 md:mb-3">
                 {product.name}
               </h1>
 
-              {/* Badges */}
-              <div className="flex items-center gap-2 mb-6">
-                <span className="bg-wood-100 text-wood-800 text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full border border-wood-200/40">
+              {/* Wood Species Pills */}
+              <div className="flex flex-wrap items-center gap-1.5 md:gap-2 mb-2 md:mb-4">
+                <span className="bg-[#F5EFE6] text-wood-900 text-[10px] uppercase font-bold tracking-wider px-3 py-0.5 md:py-1 rounded-full border border-wood-200/50">
                   {product.wood_type}
                 </span>
-                <span className="bg-gold-50 text-gold-700 text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full border border-gold-200/30">
-                  {product.finish}
-                </span>
+                {product.finish && (
+                  <span className="bg-[#F5EFE6] text-wood-900 text-[10px] uppercase font-bold tracking-wider px-3 py-0.5 md:py-1 rounded-full border border-wood-200/50">
+                    {product.finish}
+                  </span>
+                )}
               </div>
 
-              <p className="text-sm text-wood-700 leading-relaxed">
-                {product.detailed_description}
+              <p className="text-xs md:text-sm text-wood-600 leading-relaxed font-sans mb-1 md:mb-2 line-clamp-2 md:line-clamp-none">
+                {product.short_description || product.detailed_description}
               </p>
             </div>
 
-            {/* Price & Wood Variant Selector */}
-            <div className="bg-white p-6 rounded-3xl border border-wood-200/40 shadow-sm flex flex-col gap-5">
+            {/* Price & Wood Variant Selector Card Container */}
+            <div className="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl border border-wood-200/60 shadow-sm flex flex-col gap-3 md:gap-5">
               <div>
-                <span className="text-[10px] text-wood-500 uppercase font-bold tracking-wider block mb-1">Estimated Price (Starts From)</span>
+                <span className="text-[9px] md:text-[10px] text-wood-500 uppercase font-bold tracking-wider block mb-0.5 md:mb-1">Starting From</span>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-serif text-3xl font-bold text-wood-950">
+                  <span className="font-serif text-2xl md:text-3xl font-bold text-wood-950">
                     {formatPrice(getCalculatedPrice())}
                   </span>
-                  <span className="text-[10px] text-wood-500 font-sans italic">
-                    *Excludes shipping & taxes
+                  <span className="text-[11px] md:text-xs text-wood-500 font-normal">
+                    (Price may vary by wood)
                   </span>
                 </div>
               </div>
@@ -464,13 +475,13 @@ export const ProductDetails: React.FC = () => {
                     if (!Array.isArray(attrs) || attrs.length === 0) return null;
 
                     return (
-                      <div className="flex flex-col gap-4">
+                      <div className="flex flex-col gap-3 md:gap-4 border-t border-wood-100 pt-3 md:pt-4">
                         {attrs.map((attr: any) => (
-                          <div key={attr.name} className="flex flex-col gap-1.5">
-                            <span className="text-[10px] text-wood-500 uppercase font-bold tracking-wider">
+                          <div key={attr.name} className="flex flex-col gap-1.5 md:gap-2">
+                            <span className="text-[9px] md:text-[10px] text-wood-500 uppercase font-bold tracking-wider">
                               Select {attr.name}
                             </span>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-1.5 md:gap-2">
                               {attr.values?.map((val: string) => {
                                 const isSelected = selectedVariants[attr.name] === val;
                                 return (
@@ -478,10 +489,10 @@ export const ProductDetails: React.FC = () => {
                                     key={val}
                                     type="button"
                                     onClick={() => setSelectedVariants(prev => ({ ...prev, [attr.name]: val }))}
-                                    className={`py-2.5 px-3.5 rounded-xl text-xs font-semibold border transition-all ${
+                                    className={`py-1.5 md:py-2.5 px-3 md:px-4 rounded-lg md:rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                                       isSelected
-                                        ? 'bg-wood-800 border-wood-800 text-white shadow-sm scale-[1.02]'
-                                        : 'bg-wood-50/50 border-wood-200 text-wood-800 hover:bg-wood-100'
+                                        ? 'bg-[#2A180C] text-white shadow-sm border border-[#2A180C]'
+                                        : 'bg-white border border-wood-200 text-wood-800 hover:bg-wood-50'
                                     }`}
                                   >
                                     {val}
@@ -499,25 +510,23 @@ export const ProductDetails: React.FC = () => {
                 })()
               ) : (
                 /* RENDER SIMPLE WOOD SELECTION + SURCHARGES */
-                <>
-                  <div>
-                    <span className="text-[10px] text-wood-500 uppercase font-bold tracking-wider block mb-3">Timber Selection (Wood Variant)</span>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2">
-                      {woodVariants.map((variant) => (
-                        <button
-                          key={variant.name}
-                          type="button"
-                          onClick={() => setSelectedWood(variant.name)}
-                          className={`py-2.5 px-3 rounded-xl text-xs font-semibold border transition-all ${
-                            selectedWood === variant.name
-                              ? 'bg-wood-800 border-wood-800 text-white shadow-sm scale-[1.02]'
-                              : 'bg-wood-50/50 border-wood-200 text-wood-800 hover:bg-wood-100'
-                          }`}
-                        >
-                          {variant.name}
-                        </button>
-                      ))}
-                    </div>
+                <div className="border-t border-wood-100 pt-3 md:pt-4">
+                  <span className="text-[9px] md:text-[10px] text-wood-500 uppercase font-bold tracking-wider block mb-2 md:mb-2.5">Select Wood</span>
+                  <div className="flex flex-wrap gap-1.5 md:gap-2">
+                    {woodVariants.map((variant) => (
+                      <button
+                        key={variant.name}
+                        type="button"
+                        onClick={() => setSelectedWood(variant.name)}
+                        className={`py-1.5 md:py-2.5 px-3 md:px-4 rounded-lg md:rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                          selectedWood === variant.name
+                            ? 'bg-[#2A180C] text-white shadow-sm border border-[#2A180C]'
+                            : 'bg-white border border-wood-200 text-wood-800 hover:bg-wood-50'
+                        }`}
+                      >
+                        {variant.name}
+                      </button>
+                    ))}
                   </div>
 
                   {product.specifications && product.specifications.custom_variants && (() => {
@@ -528,13 +537,13 @@ export const ProductDetails: React.FC = () => {
                       if (!Array.isArray(vars) || vars.length === 0) return null;
 
                       return (
-                        <div className="flex flex-col gap-4 mt-3 border-t border-wood-100 pt-4">
+                        <div className="flex flex-col gap-3 md:gap-4 mt-3 md:mt-4 border-t border-wood-100 pt-3 md:pt-4">
                           {vars.map((v: any) => (
-                            <div key={v.name} className="flex flex-col gap-1.5">
-                              <span className="text-[10px] text-wood-500 uppercase font-bold tracking-wider">
+                            <div key={v.name} className="flex flex-col gap-1.5 md:gap-2">
+                              <span className="text-[9px] md:text-[10px] text-wood-500 uppercase font-bold tracking-wider">
                                 Select {v.name}
                               </span>
-                              <div className="flex flex-wrap gap-2">
+                              <div className="flex flex-wrap gap-1.5 md:gap-2">
                                 {v.options?.map((opt: any) => {
                                   const isSelected = selectedVariants[v.name] === opt.name;
                                   const surchargeText = opt.priceSurcharge > 0 ? ` (+₹${opt.priceSurcharge.toLocaleString('en-IN')})` : '';
@@ -543,10 +552,10 @@ export const ProductDetails: React.FC = () => {
                                       key={opt.name}
                                       type="button"
                                       onClick={() => setSelectedVariants(prev => ({ ...prev, [v.name]: opt.name }))}
-                                      className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all ${
+                                      className={`py-1.5 md:py-2.5 px-3 md:px-4 rounded-lg md:rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                                         isSelected
-                                          ? 'bg-wood-800 border-wood-800 text-white shadow-sm'
-                                          : 'bg-wood-50/50 border-wood-200 text-wood-800 hover:bg-wood-100'
+                                          ? 'bg-[#2A180C] text-white shadow-sm border border-[#2A180C]'
+                                          : 'bg-white border border-wood-200 text-wood-800 hover:bg-wood-50'
                                       }`}
                                     >
                                       {opt.name}{surchargeText}
@@ -562,12 +571,12 @@ export const ProductDetails: React.FC = () => {
                       return null;
                     }
                   })()}
-                </>
+                </div>
               )}
             </div>
 
-            {/* Action buttons (Showroom CTA focuses) */}
-            <div className="flex flex-col gap-3 pt-4 border-t border-wood-200/40">
+            {/* Inline Action buttons for Desktop & Call/Custom buttons for Mobile */}
+            <div className="flex flex-col gap-3 pt-2">
               <a
                 href={getWhatsAppLink()}
                 target="_blank"
@@ -575,15 +584,14 @@ export const ProductDetails: React.FC = () => {
                 onClick={() => {
                   supabase.rpc('increment_product_metric', { product_id: product.id, metric_type: 'whatsapp' }).then(({ error }) => { if (error) console.error(error); });
                 }}
-                className="w-full bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-full font-semibold uppercase tracking-wider text-xs transition-all duration-300 shadow-md shadow-[#25D366]/10 flex items-center justify-center gap-2"
+                className="hidden md:flex w-full bg-[#10B981] hover:bg-[#059669] text-white py-4 rounded-full font-bold uppercase tracking-wider text-xs transition-all duration-300 shadow-md shadow-[#10B981]/20 items-center justify-center cursor-pointer"
               >
-                <MessageCircle className="w-5 h-5 fill-white" />
-                Buy Now
+                BUY NOW
               </a>
               <div className="grid grid-cols-2 gap-3">
                 <a
                   href="tel:+919746321808"
-                  className="bg-wood-800 hover:bg-wood-900 text-white py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-1.5"
+                  className="bg-wood-800 hover:bg-wood-900 text-white py-3 md:py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5" />
                   Call Showroom
@@ -591,7 +599,7 @@ export const ProductDetails: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsEnquiryModalOpen(true)}
-                  className="bg-white border border-wood-300 hover:bg-wood-100/50 text-wood-800 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="bg-white border border-wood-300 hover:bg-wood-100/50 text-wood-800 py-3 md:py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Info className="w-3.5 h-3.5" />
                   Request Custom
@@ -761,6 +769,21 @@ export const ProductDetails: React.FC = () => {
           </div>
         )}
 
+        {/* Floating Fixed Bottom CTA Bar for Mobile (Exact green BUY NOW pill without cart icon) */}
+        <div className="fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-md border-t border-wood-200/60 z-40 md:hidden shadow-lg">
+          <a
+            href={getWhatsAppLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              supabase.rpc('increment_product_metric', { product_id: product.id, metric_type: 'whatsapp' }).then(({ error }) => { if (error) console.error(error); });
+            }}
+            className="w-full bg-[#10B981] active:bg-[#059669] text-white py-3.5 rounded-full font-bold uppercase tracking-wider text-xs shadow-md shadow-[#10B981]/20 flex items-center justify-center cursor-pointer text-center"
+          >
+            BUY NOW
+          </a>
+        </div>
+
         <EnquiryModal
           isOpen={isEnquiryModalOpen}
           onClose={() => setIsEnquiryModalOpen(false)}
@@ -768,6 +791,22 @@ export const ProductDetails: React.FC = () => {
           productCategory={product?.category}
         />
 
+        {/* Fullscreen Lightbox Zoom Modal */}
+        {isLightboxOpen && (
+          <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+            <button
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute top-6 right-6 text-white/80 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img
+              src={selectedImage}
+              alt={product.name}
+              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
