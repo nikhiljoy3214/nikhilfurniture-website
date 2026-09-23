@@ -93,6 +93,7 @@ export const MediaLibraryPicker: React.FC<MediaLibraryPickerProps> = ({ isOpen, 
     if (isOpen) {
       fetchMediaCatalog();
       setActiveTab('browse');
+      setSelectedFolder('All');
       setSelectedAsset(null);
       setUploadFile(null);
       setCurrentPage(1);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../../lib/supabase';
 import { SEO } from '../../../components/SEO';
-import { Plus, Trash2, Edit3, Star, Eye, RotateCcw, AlertCircle, Loader2, ArrowUp, ArrowDown } from 'lucide-react';
+import { Plus, Trash2, Edit3, Star, Eye, RotateCcw, AlertCircle, Loader2, ArrowUp, ArrowDown, Upload } from 'lucide-react';
 import { MediaLibraryPicker } from '../../../components/admin/MediaLibraryPicker';
 
 const defaultTestimonialsConfig = {
@@ -141,7 +141,36 @@ export const TestimonialsPage: React.FC = () => {
     triggerSaveState({ ...config, testimonials: updated });
   };
 
-  // Avatar Upload
+  // Avatar Direct Upload
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
+
+  const handleDirectAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingAvatar(true);
+    try {
+      const fileExt = file.name.split('.').pop() || 'jpg';
+      const fileName = `avatar_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('furniture')
+        .upload(fileName, file, { contentType: file.type || 'image/jpeg' });
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('furniture')
+        .getPublicUrl(fileName);
+
+      setCurrentEditItem((prev: any) => ({ ...prev, avatar: publicUrl }));
+      setIsDirty(true);
+    } catch (err: any) {
+      alert(`Avatar upload failed: ${err.message}`);
+    } finally {
+      setUploadingAvatar(false);
+    }
+  };
 
 
   // Save Draft
@@ -382,18 +411,48 @@ export const TestimonialsPage: React.FC = () => {
               </div>
 
               <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 shadow-sm border bg-wood-50">
-                    <img src={currentEditItem.avatar} alt="Avatar Preview" className="w-full h-full object-cover" />
+                <div className="flex items-center gap-4 bg-wood-50/50 p-3 rounded-2xl border border-wood-200/60">
+                  <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 shadow-md border-2 border-white bg-wood-100">
+                    <img
+                      src={currentEditItem.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200'}
+                      alt="Avatar Preview"
+                      className="w-full h-full object-cover"
+                      onError={(e: any) => {
+                        e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200';
+                      }}
+                    />
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => setPickerOpen(true)}
-                      className="bg-wood-100 hover:bg-wood-200 text-wood-800 border-none py-1.5 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer shadow-sm"
-                    >
-                      Select Avatar
-                    </button>
+                  <div className="flex flex-col gap-2 flex-grow">
+                    <div className="flex items-center gap-2">
+                      <label className="bg-wood-800 hover:bg-wood-950 text-white border-none py-1.5 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer shadow-sm flex items-center gap-1">
+                        <Upload className="w-3.5 h-3.5" />
+                        {uploadingAvatar ? 'Uploading...' : 'Upload Photo'}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleDirectAvatarUpload}
+                          disabled={uploadingAvatar}
+                          className="hidden"
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setPickerOpen(true)}
+                        className="bg-white border border-wood-300 hover:bg-wood-100 text-wood-800 py-1.5 px-3 rounded-lg text-[10px] font-bold uppercase tracking-wider cursor-pointer shadow-sm"
+                      >
+                        From Library
+                      </button>
+                    </div>
+                    <div className="flex flex-col gap-0.5">
+                      <label className="text-[9px] font-bold uppercase text-wood-500">Avatar Image URL</label>
+                      <input
+                        type="text"
+                        value={currentEditItem.avatar || ''}
+                        onChange={(e) => setCurrentEditItem({ ...currentEditItem, avatar: e.target.value })}
+                        placeholder="https://..."
+                        className="w-full bg-white border border-wood-200 rounded-lg py-1 px-2.5 text-[11px] focus:outline-none focus:border-wood-500 font-mono"
+                      />
+                    </div>
                   </div>
                 </div>
 
